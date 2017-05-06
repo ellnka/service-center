@@ -1,20 +1,19 @@
 package com.source.it.services;
 
-import jdbc.dao.AbstractDaoFactory;
-import jdbc.dao.GenericDao;
+
 import jdbc.exceptions.GenericDaoException;
-import jdbc.model.UserRole;
+import jdbc.manager.AbstractManagerFactory;
+import jdbc.manager.UserManager;
+import jdbc.model.User;
 
 public class UserService {
-    public UserRole getUserRole(Long id) {
-        GenericDao<UserRole, Long> userRoleDao =
-                AbstractDaoFactory.getDaoFactory(UserRole.class).getDao();
+    private UserManager userManager = AbstractManagerFactory.getManagerFactory().getUserManager();
+
+    public User getUserByLogin(String login) {
         try {
-            UserRole result = userRoleDao.read(id);
-            return result;
+            return userManager.getUserByLogin(login);
         } catch (GenericDaoException e) {
             return null;
         }
     }
-
 }

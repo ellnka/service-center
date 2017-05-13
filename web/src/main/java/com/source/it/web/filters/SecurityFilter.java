@@ -1,4 +1,4 @@
-package com.source.it.services.filters;
+package com.source.it.web.filters;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ public class SecurityFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession(true);
         if (session.getAttribute("user") == null) {
-            req.getRequestDispatcher("/login").forward(req, resp);
+            req.getRequestDispatcher("/JSP/login.jsp").forward(req, resp);
         } else {
             chain.doFilter(request, response);
         }

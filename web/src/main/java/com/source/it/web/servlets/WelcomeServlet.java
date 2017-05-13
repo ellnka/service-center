@@ -1,4 +1,4 @@
-package com.source.it.services.servlets;
+package com.source.it.web.servlets;
 
 import jdbc.model.User;
 

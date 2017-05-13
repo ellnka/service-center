@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>loginServlet</servlet-name>
-        <servlet-class>com.source.it.services.servlets.LoginServlet</servlet-class>
+        <servlet-class>com.source.it.web.servlets.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>welcomeServlet</servlet-name>
-        <servlet-class>com.source.it.services.servlets.WelcomeServlet</servlet-class>
+        <servlet-class>com.source.it.web.servlets.WelcomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>welcomeServlet</servlet-name>
@@ -26,12 +26,22 @@
 
     <filter>
         <filter-name>securityFilter</filter-name>
-        <filter-class>com.source.it.services.filters.SecurityFilter</filter-class>
+        <filter-class>com.source.it.web.filters.SecurityFilter</filter-class>
     </filter>
 
     <filter-mapping>
         <filter-name>securityFilter</filter-name>
         <servlet-name>welcomeServlet</servlet-name>
     </filter-mapping>
+
+    <listener>
+        <listener-class>com.source.it.web.listeners.ContextInitializerListener</listener-class>
+    </listener>
+
+    <session-config>
+        <cookie-config>
+            <max-age>1800</max-age>
+        </cookie-config>
+    </session-config>
 
 </web-app>

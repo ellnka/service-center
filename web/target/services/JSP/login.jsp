@@ -39,14 +39,16 @@
     </form>
   </c:when>
   <c:otherwise>
-    <c:out value="Welcome, ${user.name} ${user.lastName}!"/>
+    <div align="right">
+      <c:out  value="Welcome, ${user.name} ${user.lastName}!"/>
+    </div>
     <form action="/services/login" method="post">
       <table border="0" align="right">
         <tr>
           <td>
             <button type="submit" value="logout" name="logout"
                     style="background-color:transparent; border-color:transparent;">
-            <img src="./resources/images/logout_button_0.png" height="20" width="80"/>
+              <img src="./resources/images/logout_button_0.png" height="20" width="80"/>
             </button>
           </td>
         </tr>

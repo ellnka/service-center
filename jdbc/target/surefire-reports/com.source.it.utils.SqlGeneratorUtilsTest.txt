@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: com.source.it.utils.SqlGeneratorUtilsTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.561 sec <<< FAILURE!
+testGenerateSqlForItemType(com.source.it.utils.SqlGeneratorUtilsTest)  Time elapsed: 0.001 sec  <<< FAILURE!
+java.lang.AssertionError: expected [SELECT IT.ID, IT.NAME FROM ITEM_TYPES IT WHERE IT.ID=?] but found [SELECT T.ID, T.NAME FROM TYPES T WHERE T.ID=?]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.source.it.utils.SqlGeneratorUtilsTest.testGenerateSqlForItemType(SqlGeneratorUtilsTest.java:23)
+testGenerateSqlForUser(com.source.it.utils.SqlGeneratorUtilsTest)  Time elapsed: 0.002 sec  <<< FAILURE!
+java.lang.AssertionError: expected [SELECT U.ID, U.NAME, U.LASTNAME, U.LOGIN, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, UR.ROLE FROM USERS U JOIN USER_ROLES UR ON U.USER_ROLE_ID=UR.ID WHERE U.ID=?] but found [SELECT U.ID, U.NAME, U.LASTNAME, U.LOGIN, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, R.ROLE FROM USERS U JOIN ROLES R ON U.USER_ROLE_ID=R.ID WHERE U.ID=?]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.source.it.utils.SqlGeneratorUtilsTest.testGenerateSqlForUser(SqlGeneratorUtilsTest.java:60)
+testGenerateSqlForWarrantyPeriod(com.source.it.utils.SqlGeneratorUtilsTest)  Time elapsed: 0.001 sec  <<< FAILURE!
+java.lang.AssertionError: expected [SELECT WP.ID, WP.DAYS, WP.NAME FROM WARRANTY_PERIODS WP WHERE WP.ID=?] but found [SELECT P.ID, P.DAYS, P.NAME FROM PERIODS P WHERE P.ID=?]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.source.it.utils.SqlGeneratorUtilsTest.testGenerateSqlForWarrantyPeriod(SqlGeneratorUtilsTest.java:37)

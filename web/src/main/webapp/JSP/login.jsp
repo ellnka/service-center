@@ -39,7 +39,9 @@
     </form>
   </c:when>
   <c:otherwise>
-    <c:out value="Welcome, ${user.name} ${user.lastName}!"/>
+    <div align="right">
+      <c:out  value="Welcome, ${user.name} ${user.lastName}!"/>
+    </div>
     <form action="/services/login" method="post">
       <table border="0" align="right">
         <tr>

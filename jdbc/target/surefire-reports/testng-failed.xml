@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [com.source.it.utils.SqlGeneratorUtilsTest]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="com.source.it.utils.SqlGeneratorUtilsTest">
+        <methods>
+          <include name="testGenerateSqlForUser"/>
+          <include name="testGenerateSqlForWarrantyPeriod"/>
+          <include name="testGenerateSqlForItemType"/>
+        </methods>
+      </class> <!-- com.source.it.utils.SqlGeneratorUtilsTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [com.source.it.utils.SqlGeneratorUtilsTest] -->

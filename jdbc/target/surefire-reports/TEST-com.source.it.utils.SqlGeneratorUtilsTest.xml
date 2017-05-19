@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="4" failures="3" name="com.source.it.utils.SqlGeneratorUtilsTest" time="0.561" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="25.92-b14"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/kblyumkin/Projects/ServiceCenter"/>
+    <property name="java.runtime.version" value="1.8.0_92-b14"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/_1/08sjch_96hlgdlfnywscqdyc0000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/Users/kblyumkin/opt/apache-maven-3.0.4/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/kblyumkin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.10.5"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/kblyumkin"/>
+    <property name="user.timezone" value="Europe/Kiev"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="kblyumkin"/>
+    <property name="java.class.path" value="/Users/kblyumkin/opt/apache-maven-3.0.4/boot/plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_92"/>
+    <property name="java.ext.dirs" value="/Users/kblyumkin/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/Users/kblyumkin/opt/apache-maven-3.0.4"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="com.source.it.utils.SqlGeneratorUtilsTest" name="testGenerateSqlForItem" time="0.011"/>
+  <testcase classname="com.source.it.utils.SqlGeneratorUtilsTest" name="testGenerateSqlForItemType" time="0.001">
+    <failure message="expected [SELECT IT.ID, IT.NAME FROM ITEM_TYPES IT WHERE IT.ID=?] but found [SELECT T.ID, T.NAME FROM TYPES T WHERE T.ID=?]" type="java.lang.AssertionError">java.lang.AssertionError: expected [SELECT IT.ID, IT.NAME FROM ITEM_TYPES IT WHERE IT.ID=?] but found [SELECT T.ID, T.NAME FROM TYPES T WHERE T.ID=?]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.source.it.utils.SqlGeneratorUtilsTest.testGenerateSqlForItemType(SqlGeneratorUtilsTest.java:23)
+</failure>
+  </testcase>
+  <testcase classname="com.source.it.utils.SqlGeneratorUtilsTest" name="testGenerateSqlForUser" time="0.002">
+    <failure message="expected [SELECT U.ID, U.NAME, U.LASTNAME, U.LOGIN, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, UR.ROLE FROM USERS U JOIN USER_ROLES UR ON U.USER_ROLE_ID=UR.ID WHERE U.ID=?] but found [SELECT U.ID, U.NAME, U.LASTNAME, U.LOGIN, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, R.ROLE FROM USERS U JOIN ROLES R ON U.USER_ROLE_ID=R.ID WHERE U.ID=?]" type="java.lang.AssertionError">java.lang.AssertionError: expected [SELECT U.ID, U.NAME, U.LASTNAME, U.LOGIN, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, UR.ROLE FROM USERS U JOIN USER_ROLES UR ON U.USER_ROLE_ID=UR.ID WHERE U.ID=?] but found [SELECT U.ID, U.NAME, U.LASTNAME, U.LOGIN, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, R.ROLE FROM USERS U JOIN ROLES R ON U.USER_ROLE_ID=R.ID WHERE U.ID=?]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.source.it.utils.SqlGeneratorUtilsTest.testGenerateSqlForUser(SqlGeneratorUtilsTest.java:60)
+</failure>
+  </testcase>
+  <testcase classname="com.source.it.utils.SqlGeneratorUtilsTest" name="testGenerateSqlForWarrantyPeriod" time="0.001">
+    <failure message="expected [SELECT WP.ID, WP.DAYS, WP.NAME FROM WARRANTY_PERIODS WP WHERE WP.ID=?] but found [SELECT P.ID, P.DAYS, P.NAME FROM PERIODS P WHERE P.ID=?]" type="java.lang.AssertionError">java.lang.AssertionError: expected [SELECT WP.ID, WP.DAYS, WP.NAME FROM WARRANTY_PERIODS WP WHERE WP.ID=?] but found [SELECT P.ID, P.DAYS, P.NAME FROM PERIODS P WHERE P.ID=?]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.source.it.utils.SqlGeneratorUtilsTest.testGenerateSqlForWarrantyPeriod(SqlGeneratorUtilsTest.java:37)
+</failure>
+  </testcase>
+</testsuite>

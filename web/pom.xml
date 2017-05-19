@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>web</artifactId>
+    <name>Services-center :: web</name>
     <packaging>war</packaging>
 
     <dependencies>
@@ -28,6 +29,11 @@
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
         </dependency>
     </dependencies>
 

@@ -9,7 +9,7 @@ import com.source.it.jdbc.manager.UserManager;
 import com.source.it.jdbc.model.User;
 
 public class UserService {
-    private UserManager userManager = AbstractManagerFactory.getManagerFactory().getUserManager();
+    protected UserManager userManager = AbstractManagerFactory.getManagerFactory().getUserManager();
     private GenericDao<User, Long> userDao = AbstractDaoFactory.getDaoFactory(User.class).getDao();
 
     public User getUserByLogin(String login) {

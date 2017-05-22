@@ -1,7 +1,6 @@
 package com.source.it.jdbc.model;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class WarrantyPeriod extends BaseEntity<Long> {
@@ -33,19 +32,6 @@ public class WarrantyPeriod extends BaseEntity<Long> {
     @Override
     public void prepareReadOrDeleteStatement(PreparedStatement stmt, Long id) throws SQLException {
         stmt.setLong(1, id);
-    }
-
-    @Override
-    public void setDataFromResultSet(ResultSet resultSet) throws SQLException {
-        name = resultSet.getString(1);
-        days = resultSet.getInt(2);
-    }
-
-    @Override
-    public void prepareUpdateStatement(PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, name);
-        stmt.setInt(   2, days);
-        stmt.setLong(  3, id);
     }
 
     @Override

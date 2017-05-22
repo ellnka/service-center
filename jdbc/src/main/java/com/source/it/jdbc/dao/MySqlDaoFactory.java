@@ -18,11 +18,13 @@ public class MySqlDaoFactory<T extends BaseEntity> extends AbstractDaoFactory {
     private static final String DB_PORT                 = "db.port";
     private static final String DB_HOST                 = "db.host";
     private static final String DB_SCHEMA               = "db.schema";
+    //private File dbPropsFile; ToDo: - fix me!
 
     private Class<T> type;
     protected DataSource dataSource;
 
     protected MySqlDaoFactory(Class<T> type) {
+        //dbPropsFile = new File(this.getClass().getResource("db.properties").getPath());
         this.type = type;
         this.dataSource = createDataSourceAndLoadProperties();
     }

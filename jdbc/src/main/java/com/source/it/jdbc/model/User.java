@@ -1,8 +1,6 @@
 package com.source.it.jdbc.model;
 
-
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User extends BaseEntity<Long> {
@@ -74,29 +72,6 @@ public class User extends BaseEntity<Long> {
     @Override
     public void prepareReadOrDeleteStatement(PreparedStatement stmt, Long id) throws SQLException {
         stmt.setLong(1, id);
-    }
-
-    @Override
-    public void setDataFromResultSet(ResultSet resultSet) throws SQLException {
-        name =     resultSet.getString(2);
-        lastName = resultSet.getString(3);
-        login =    resultSet.getString(4);
-        password = resultSet.getString(5);
-        email =    resultSet.getString(6);
-        userRole = new UserRole();
-        userRole.setId(resultSet.getLong(7));
-        userRole.setRole(resultSet.getString(8));
-    }
-
-    @Override
-    public void prepareUpdateStatement(PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, name);
-        stmt.setString(2, lastName);
-        stmt.setString(3, login);
-        stmt.setString(4, password);
-        stmt.setString(5, email);
-        stmt.setLong(  6, userRole.getId());
-        stmt.setLong(  7, id);
     }
 
     @Override

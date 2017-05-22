@@ -3,12 +3,13 @@ package com.source.it.jdbc.dao;
 
 import com.source.it.jdbc.model.BaseEntity;
 import com.source.it.jdbc.exceptions.GenericDaoException;
-import com.source.it.jdbc.model.BaseEntityInterface;
 import com.source.it.jdbc.utils.SqlGeneratorUtils;
 
 import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.*;
+
+import static com.source.it.jdbc.utils.SqlGeneratorUtils.*;
 
 public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> implements GenericDao <T, PK> {
 
@@ -26,7 +27,7 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
         try (Connection con = dataSource.getConnection()) {
             prepareConnection(con);
             PreparedStatement stmt =
-                    con.prepareStatement(objectToCreate.getCreateSql(),
+                    con.prepareStatement(generateCreateSql(objectToCreate),
                             Statement.RETURN_GENERATED_KEYS);
             objectToCreate.prepareCreateStatement(stmt);
             stmt.execute();
@@ -53,21 +54,20 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
         try (Connection con = dataSource.getConnection()) {
             prepareConnection(con);
             result = type.newInstance();
-            PreparedStatement stmt = con.prepareStatement(SqlGeneratorUtils.generateSelectSql(result));
+            PreparedStatement stmt = con.prepareStatement(generateSelectSql(result));
             result.prepareReadOrDeleteStatement(stmt, id);
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
-                result.setId(id);
-                result.setDataFromResultSet(resultSet);
+                fillObjectFromResultSet(resultSet, result);
                 con.commit();
                 return result;
             }
         } catch (SQLException | InstantiationException | IllegalAccessException e) {
             throw new GenericDaoException("Error reading "
-                    + result == null
+                    + (result == null
                         ? "unknown"
-                        : result.getClass().getSimpleName().toLowerCase()
-                    +" from data base", e);
+                        : result.getClass().getSimpleName().toLowerCase())
+                    + " from data base", e);
         }
         String type = result == null
                 ? "unknown"
@@ -80,9 +80,8 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
     public void update(T objectToUpdate) {
         try(Connection con = dataSource.getConnection()) {
             prepareConnection(con);
-            PreparedStatement stmt = con.prepareStatement(objectToUpdate.getUpdateSql(),
+            PreparedStatement stmt = con.prepareStatement(generateUpdateSql(objectToUpdate),
                     Statement.RETURN_GENERATED_KEYS);
-            objectToUpdate.prepareUpdateStatement(stmt);
             int countOfUpdatedRows = stmt.executeUpdate();
             if (countOfUpdatedRows == 1) {
                 con.commit();
@@ -102,7 +101,7 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
     public void delete(T objectToDelete) {
         try(Connection con = dataSource.getConnection()) {
             prepareConnection(con);
-            PreparedStatement stmt = con.prepareStatement(objectToDelete.getDeleteSql());
+            PreparedStatement stmt = con.prepareStatement(generateDeleteSql(objectToDelete));
             objectToDelete.prepareReadOrDeleteStatement(stmt, objectToDelete.getId());
             stmt.executeUpdate();
             con.commit();

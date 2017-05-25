@@ -42,6 +42,8 @@ public class RegisterServlet extends AbstractServiceServlet {
             if (!errorsInForm) {
                 User user = createUser(params);
                 userService.createUser(user);
+                req.getSession(true).setAttribute(USER, user);
+                req.getSession().setAttribute(LOGIN_FAILED, false);
             }
         } catch (GenericDaoException e) {
             if (e.getCause().getMessage().toLowerCase().contains(NON_UNIQUE_EMAIL)) {

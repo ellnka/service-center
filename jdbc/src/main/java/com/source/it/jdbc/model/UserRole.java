@@ -1,7 +1,6 @@
 package com.source.it.jdbc.model;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRole extends BaseEntity<Long> {
@@ -26,17 +25,6 @@ public class UserRole extends BaseEntity<Long> {
     }
 
     @Override
-    public void setDataFromResultSet(ResultSet resultSet) throws SQLException {
-        role = resultSet.getString(2);
-    }
-
-    @Override
-    public void prepareUpdateStatement(PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, role);
-        stmt.setLong  (2, id);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserRole)) return false;
@@ -51,7 +39,7 @@ public class UserRole extends BaseEntity<Long> {
     public String toString() {
         return "UserRole{" +
                 "id='" + id + '\'' +
-                "role='" + role + '\'' +
+                ",role='" + role + '\'' +
                 '}';
     }
 }

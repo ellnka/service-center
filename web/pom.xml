@@ -17,7 +17,13 @@
         <dependency>
             <groupId>source-it</groupId>
             <artifactId>services</artifactId>
-            <version>0.9</version>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>source-it</groupId>
+            <artifactId>jdbc</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

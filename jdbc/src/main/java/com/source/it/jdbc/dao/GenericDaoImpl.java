@@ -3,31 +3,40 @@ package com.source.it.jdbc.dao;
 
 import com.source.it.jdbc.model.BaseEntity;
 import com.source.it.jdbc.exceptions.GenericDaoException;
-import com.source.it.jdbc.model.BaseEntityInterface;
 import com.source.it.jdbc.utils.SqlGeneratorUtils;
+import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 
 import javax.sql.DataSource;
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.sql.*;
 
-public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> implements GenericDao <T, PK> {
+import static com.source.it.jdbc.utils.SqlGeneratorUtils.*;
 
+public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> implements GenericDao <T, PK> {
+    private static final Logger LOGGER = Logger.getLogger(GenericDaoImpl.class);
     private Class<T> type;
-    private DataSource dataSource;
+    protected DataSource dataSource;
 
     protected GenericDaoImpl(DataSource dataSource, Class<T> type) {
         this.dataSource = dataSource;
         this.type = type;
+        LOGGER.debug("GenericDaoImpl created");
+    }
 
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @Override
     public PK create(T objectToCreate) {
         try (Connection con = dataSource.getConnection()) {
             prepareConnection(con);
+            String sql = generateCreateSql(objectToCreate);
+            LOGGER.debug("Created sql for " + objectToCreate + ":" + sql);
             PreparedStatement stmt =
-                    con.prepareStatement(objectToCreate.getCreateSql(),
-                            Statement.RETURN_GENERATED_KEYS);
+                    con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             objectToCreate.prepareCreateStatement(stmt);
             stmt.execute();
             ResultSet resultSet = stmt.getGeneratedKeys();
@@ -38,6 +47,7 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
                 return id;
             }
         } catch (SQLException e) {
+            LOGGER.error("Error saving object to DB ", e);
             throw new GenericDaoException("Error saving "
                     + objectToCreate.getClass().getSimpleName()
                     + " to data base", e);
@@ -53,25 +63,29 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
         try (Connection con = dataSource.getConnection()) {
             prepareConnection(con);
             result = type.newInstance();
-            PreparedStatement stmt = con.prepareStatement(SqlGeneratorUtils.generateSelectSql(result));
+            String sql = generateSelectSql(result);
+            LOGGER.debug("Created sql for " + result.getClass().getSimpleName() + ":" + sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             result.prepareReadOrDeleteStatement(stmt, id);
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
-                result.setId(id);
-                result.setDataFromResultSet(resultSet);
+                fillObjectFromResultSet(resultSet, result);
                 con.commit();
                 return result;
             }
         } catch (SQLException | InstantiationException | IllegalAccessException e) {
+            LOGGER.error("Error reading " + type + " from data base", e);
             throw new GenericDaoException("Error reading "
-                    + result == null
+                    + (result == null
                         ? "unknown"
-                        : result.getClass().getSimpleName().toLowerCase()
-                    +" from data base", e);
+                        : result.getClass().getSimpleName().toLowerCase())
+                    + " from data base", e);
         }
         String type = result == null
                 ? "unknown"
                 : result.getClass().getSimpleName().toLowerCase();
+        LOGGER.debug("Error reading "
+                                + type + " from data base - no " + type +"s were found with id = " + id);
         throw new GenericDaoException("Error reading "
                 + type +  " from data base - no " + type +"s were found with id = " + id);
     }
@@ -80,9 +94,9 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
     public void update(T objectToUpdate) {
         try(Connection con = dataSource.getConnection()) {
             prepareConnection(con);
-            PreparedStatement stmt = con.prepareStatement(objectToUpdate.getUpdateSql(),
-                    Statement.RETURN_GENERATED_KEYS);
-            objectToUpdate.prepareUpdateStatement(stmt);
+            String sql = generateUpdateSql(objectToUpdate);
+            LOGGER.debug("Created sql for " + objectToUpdate + ":" + sql);
+            PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             int countOfUpdatedRows = stmt.executeUpdate();
             if (countOfUpdatedRows == 1) {
                 con.commit();
@@ -102,7 +116,9 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
     public void delete(T objectToDelete) {
         try(Connection con = dataSource.getConnection()) {
             prepareConnection(con);
-            PreparedStatement stmt = con.prepareStatement(objectToDelete.getDeleteSql());
+            String sql = generateDeleteSql(objectToDelete);
+            LOGGER.debug("Created sql for " + objectToDelete + ":" + sql);
+            PreparedStatement stmt = con.prepareStatement(generateDeleteSql(objectToDelete));
             objectToDelete.prepareReadOrDeleteStatement(stmt, objectToDelete.getId());
             stmt.executeUpdate();
             con.commit();

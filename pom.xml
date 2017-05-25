@@ -14,6 +14,7 @@
         <module>services</module>
         <module>jdbc</module>
         <module>web</module>
+        <module>utils</module>
     </modules>
 
 
@@ -24,6 +25,10 @@
         <jstl.version>1.2</jstl.version>
         <common.validator.version>1.4.1</common.validator.version>
         <testng.version>6.9.9</testng.version>
+        <h2.version>1.4.195</h2.version>
+        <apache.common.version>3.5</apache.common.version>
+        <mockito.version>1.9.5</mockito.version>
+        <log4j.version>1.2.9</log4j.version>
     </properties>
 
     <dependencyManagement>
@@ -57,12 +62,33 @@
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.5</version>
+                <version>${apache.common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

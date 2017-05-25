@@ -2,7 +2,6 @@ package com.source.it.jdbc.model;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Item extends BaseEntity<Long> {
@@ -59,16 +58,6 @@ public class Item extends BaseEntity<Long> {
 
     @Override
     public void prepareReadOrDeleteStatement(PreparedStatement stmt, Long id) throws SQLException {
-
-    }
-
-    @Override
-    public void setDataFromResultSet(ResultSet resultSet) throws SQLException {
-
-    }
-
-    @Override
-    public void prepareUpdateStatement(PreparedStatement stmt) throws SQLException {
 
     }
 

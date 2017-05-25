@@ -3,6 +3,7 @@ package com.source.it.jdbc.manager;
 import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.model.User;
 import com.source.it.jdbc.utils.SqlGeneratorUtils;
+import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,7 +15,8 @@ import static com.source.it.jdbc.utils.SqlGeneratorUtils.generateSelectByFieldSq
 
 public class UserManager {
     //private final static String SELECT_BY_LOGIN = "SELECT U.ID, U.NAME, U.LASTNAME, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, UR.ROLE FROM USERS U JOIN USER_ROLES UR ON U.USER_ROLE_ID = UR.ID WHERE U.LOGIN = ?";
-    private DataSource dataSource;
+    private static final Logger LOGGER = Logger.getLogger(UserManager.class);
+    protected DataSource dataSource;
 
     public UserManager(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -23,7 +25,9 @@ public class UserManager {
     public User getUserByLogin(String login) {
         try (Connection con = dataSource.getConnection()) {
             User user = new User();
-            PreparedStatement stmt = con.prepareStatement(generateSelectByFieldSql(user, "LOGIN"));
+            String sql = generateSelectByFieldSql(user, "LOGIN");
+            LOGGER.debug("Created sql for User:" + sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, login);
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {

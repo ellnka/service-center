@@ -167,7 +167,10 @@ public class SqlGeneratorUtils {
         String tableShortName = "";
         String[] words = className.split(SPLIT_BY_UPPER_CASE);
         String tableName = "";
-        for (int index = (words.length == 1 ? 0 : 1); index < words.length; index++) {
+        for (int index = 0; index < words.length; index++) {
+            if ("".equals(words[index])) {
+                continue;
+            }
             tableShortName += words[index].charAt(0);
             tableName += words[index].toUpperCase();
             if (index < words.length - 1) {

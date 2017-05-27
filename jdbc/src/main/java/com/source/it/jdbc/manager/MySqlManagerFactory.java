@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class MySqlManagerFactory extends AbstractManagerFactory {
-    private static final String RESOURCES_DB_PROPERTIES = "/Users/kblyumkin/Projects/SourceIt/src/com/kblyumkin/lecture15/examples/resources/db.properties";
     private static final String DB_USER                 = "db.user";
     private static final String DB_PASSWORD             = "db.password";
     private static final String DB_PORT                 = "db.port";
@@ -37,7 +36,7 @@ public class MySqlManagerFactory extends AbstractManagerFactory {
         MysqlDataSource dataSource = new MysqlDataSource();
         try {
             FileInputStream fis = new FileInputStream(
-                    new File(RESOURCES_DB_PROPERTIES));
+                    new File(getClass().getClassLoader().getResource("db.properties").getFile()));
             props.load(fis);
             dataSource.setUser(                 props.getProperty(DB_USER    ));
             dataSource.setPassword(             props.getProperty(DB_PASSWORD));

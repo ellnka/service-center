@@ -8,9 +8,7 @@ import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.model.User;
 import com.source.it.jdbc.model.UserRole;
 import org.h2.jdbcx.JdbcDataSource;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.sql.SQLException;
 
@@ -23,16 +21,12 @@ public class UsermanagerTest {
 
     private User doc;
 
-    //@BeforeClass
+    @BeforeClass
     public void setUp() throws SQLException {
-        H2Starter.startH2();
-
-        UserManager userManager = ((UserManager)sut);
-
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL");
         dataSource.setUser("sa");
-        userManager.dataSource = dataSource;
+        sut.dataSource = dataSource;
 
         ((GenericDaoImpl)userDao).setDataSource(dataSource);
 
@@ -46,21 +40,16 @@ public class UsermanagerTest {
         UserRole userRole = new UserRole();
         userRole.setId(1L);
         userRole.setRole("Admin");
-
-        GenericDaoImpl userRoleDaoForTest = (GenericDaoImpl) userRoleDao;
-        userRoleDaoForTest.setDataSource(dataSource);
-
-        userRoleDao.create(userRole);
         doc.setUserRole(userRole);
 
     }
 
-    //@AfterClass
+    @AfterSuite
     public void tearDown() {
         H2Starter.shutDownH2();
     }
 
-    //@Test(priority = 1)
+    @Test(priority = 1)
     public void testGetUserByLogin() {
         //Given
         userDao.create(doc);
@@ -72,7 +61,7 @@ public class UsermanagerTest {
         assertEquals(actual, doc);
     }
 
-    //@Test(priority = 10, /*Then*/ expectedExceptions = {GenericDaoException.class})
+    @Test(priority = 10, /*Then*/ expectedExceptions = {GenericDaoException.class})
     public void testGetUserByLoginForUnexistingUser() {
         //Given
         String unexistingLogin = "Some unexisting login";

@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import static com.source.it.jdbc.utils.SqlGeneratorUtils.generateSelectByFieldSql;
 
 public class UserManager {
-    //private final static String SELECT_BY_LOGIN = "SELECT U.ID, U.NAME, U.LASTNAME, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, UR.ROLE FROM USERS U JOIN USER_ROLES UR ON U.USER_ROLE_ID = UR.ID WHERE U.LOGIN = ?";
     private static final Logger LOGGER = Logger.getLogger(UserManager.class);
     protected DataSource dataSource;
 
@@ -35,8 +34,11 @@ public class UserManager {
                 return user;
             }
         } catch (SQLException e) {
+            LOGGER.error("Exception during connection to db - ", e);
             throw new GenericDaoException("Error reading user from DB");
         }
+        LOGGER.info("Error reading "
+                +  " user from DB - no user was found with login = " + login);
        throw new GenericDaoException("Error reading "
                 +  " user from DB - no user was found with login = " + login);
     }

@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Services-Jdbc test suite">
+
+    <test name="setup">
+        <classes>
+            <class name="com.source.it.jdbc.dao.H2Starter" />
+        </classes>
+    </test>
+
+    <test name="GenericDaoImpl + UserManager tests (Users/UserRole cases) ">
+        <classes>
+            <class name="com.source.it.jdbc.dao.GenericDaoImplTest"/>
+            <class name="com.source.it.jdbc.manager.UsermanagerTest"/>
+        </classes>
+    </test>
+
+</suite>

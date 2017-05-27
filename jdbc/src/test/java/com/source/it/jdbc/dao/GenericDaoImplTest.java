@@ -19,8 +19,6 @@ public class GenericDaoImplTest {
 
     @BeforeClass
     public void setUp() throws SQLException {
-        H2Starter.startH2();
-
         GenericDaoImpl dao = ((GenericDaoImpl)sut);
 
         JdbcDataSource dataSource = new JdbcDataSource();
@@ -45,11 +43,6 @@ public class GenericDaoImplTest {
         userRoleDao.create(userRole);
         doc.setUserRole(userRole);
 
-    }
-
-    @AfterClass
-    public void tearDown() {
-        H2Starter.shutDownH2();
     }
 
     @Test (priority = 1, expectedExceptions = GenericDaoException.class,

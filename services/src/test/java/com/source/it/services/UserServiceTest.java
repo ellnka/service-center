@@ -32,7 +32,7 @@ public class UserServiceTest {
         sut.userManager = userManager;
     }
 
-    //@Test
+    @Test
     public void testGetByLogin() {
         //Given
         String login = "mike";

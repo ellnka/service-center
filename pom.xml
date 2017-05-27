@@ -15,6 +15,7 @@
         <module>jdbc</module>
         <module>web</module>
         <module>utils</module>
+        <module>spring</module>
     </modules>
 
 

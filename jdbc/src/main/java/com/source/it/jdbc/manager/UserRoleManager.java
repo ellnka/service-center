@@ -3,6 +3,7 @@ package com.source.it.jdbc.manager;
 import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.model.UserRole;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,11 +15,9 @@ import static com.source.it.jdbc.utils.SqlGeneratorUtils.generateSelectByFieldSq
 
 public class UserRoleManager {
     private static final Logger LOGGER = Logger.getLogger(UserManager.class);
-    private DataSource dataSource;
 
-    public UserRoleManager(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    @Autowired
+    private DataSource dataSource;
 
     public UserRole getByRoleName(String role) {
         try (Connection con = dataSource.getConnection()) {
@@ -37,7 +36,7 @@ public class UserRoleManager {
                 return userRole;
             }
         } catch (SQLException e) {
-            throw new GenericDaoException("Error reading user from DB");
+            throw new GenericDaoException("Error reading user role from DB");
         }
         throw new GenericDaoException("Error reading "
                 +  " user roles from DB - no user roles was found with role = " + role);

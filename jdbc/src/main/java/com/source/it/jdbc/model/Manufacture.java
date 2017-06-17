@@ -4,19 +4,19 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Manufacture extends BaseEntity<Long> {
-    private String name;
+    private String manufactureName;
 
-    public String getName() {
-        return name;
+    public String getManufactureName() {
+        return manufactureName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setManufactureName(String manufactureName) {
+        this.manufactureName = manufactureName;
     }
 
     @Override
     public void prepareCreateStatement(PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, name);
+        stmt.setString(1, manufactureName);
     }
 
     @Override
@@ -31,6 +31,13 @@ public class Manufacture extends BaseEntity<Long> {
 
         Manufacture manufacture = (Manufacture) o;
 
-        return  (manufacture.name == null ? name == null : manufacture.name.equals(name));
+        return  (manufacture.manufactureName == null ? manufactureName == null : manufacture.manufactureName.equals(manufactureName));
+    }
+
+    @Override
+    public String toString() {
+        return "Manufacture{" +
+                "manufactureName='" + manufactureName + '\'' +
+                '}';
     }
 }

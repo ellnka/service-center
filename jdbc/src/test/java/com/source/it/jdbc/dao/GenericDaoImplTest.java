@@ -1,49 +1,47 @@
 package com.source.it.jdbc.dao;
 
+import com.source.it.jdbc.GenericDaoTestUtils;
 import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.model.User;
 import com.source.it.jdbc.model.UserRole;
-import org.h2.jdbcx.JdbcDataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.*;
 import java.sql.SQLException;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 
-public class GenericDaoImplTest {
-    private GenericDao<User, Long> sut = AbstractDaoFactory.getDaoFactory(User.class).getDao();
-    private GenericDao<UserRole, Long> userRoleDao = AbstractDaoFactory.getDaoFactory(UserRole.class).getDao();
+@ContextConfiguration(locations = "classpath:services-jdbc-test-context.xml")
+public class GenericDaoImplTest extends AbstractTestNGSpringContextTests {
+    @Autowired
+    @Qualifier("userDao")
+    private GenericDao<User, Long> sut;
+
+    @Autowired
+    private GenericDao<UserRole, Long> userRoleDao;
+
     private User doc;
 
     @BeforeClass
     public void setUp() throws SQLException {
-        GenericDaoImpl dao = ((GenericDaoImpl)sut);
-
-        JdbcDataSource dataSource = new JdbcDataSource();
-        dataSource.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL");
-        dataSource.setUser("sa");
-        dao.dataSource = dataSource;
-
-        GenericDaoImpl userRoleDaoForTest = (GenericDaoImpl) userRoleDao;
-        userRoleDaoForTest.dataSource = dataSource;
-
-        doc = new User();
-        doc.setId(1L);
-        doc.setEmail("mike@mysite.com");
-        doc.setLastName("Smith");
-        doc.setLogin("mike");
-        doc.setName("Mike");
-        doc.setPassword("123");
+        doc = GenericDaoTestUtils.createUser();
         UserRole userRole = new UserRole();
-        userRole.setId(1L);
         userRole.setRole("Admin");
 
         userRoleDao.create(userRole);
         doc.setUserRole(userRole);
-
     }
+
+    @AfterClass
+    public void tearDown() throws Exception {
+        userRoleDao.delete(doc.getUserRole());
+    }
+
 
     @Test (priority = 1, expectedExceptions = GenericDaoException.class,
     expectedExceptionsMessageRegExp = "Error reading user from data base .*")

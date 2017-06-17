@@ -8,10 +8,13 @@
         </classes>
     </test>
 
-    <test name="GenericDaoImpl + UserManager tests (Users/UserRole cases) ">
+    <test name="GenericDaoImpl(User/UserRole/Item/Order) + UserManager tests">
         <classes>
             <class name="com.source.it.jdbc.dao.GenericDaoImplTest"/>
-            <class name="com.source.it.jdbc.manager.UsermanagerTest"/>
+            <class name="com.source.it.jdbc.manager.UserDaoManagerTest"/>
+            <class name="com.source.it.utils.SqlGeneratorUtilsTest"/>
+            <class name="com.source.it.jdbc.dao.GenericDaoImplItemTest"/>
+            <class name="com.source.it.jdbc.dao.GenericDaoImplOrderTest"/>
         </classes>
     </test>
 

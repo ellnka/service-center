@@ -5,14 +5,14 @@ import java.sql.SQLException;
 
 public class WarrantyPeriod extends BaseEntity<Long> {
     private int days;
-    private String name;
+    private String wpName;
 
-    public String getName() {
-        return name;
+    public String getWpName() {
+        return wpName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWpName(String wpName) {
+        this.wpName = wpName;
     }
 
     public int getDays() {
@@ -25,8 +25,8 @@ public class WarrantyPeriod extends BaseEntity<Long> {
 
     @Override
     public void prepareCreateStatement(PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, name);
-        stmt.setInt(2, days);
+        stmt.setInt(1, days);
+        stmt.setString(2, wpName);
     }
 
     @Override
@@ -45,7 +45,14 @@ public class WarrantyPeriod extends BaseEntity<Long> {
             return false;
         }
 
-        return  (period.name == null ? name == null : period.name.equals(name));
+        return  (period.wpName == null ? wpName == null : period.wpName.equals(wpName));
     }
 
+    @Override
+    public String toString() {
+        return "WarrantyPeriod{" +
+                "days=" + days +
+                ", wpName='" + wpName + '\'' +
+                '}';
+    }
 }

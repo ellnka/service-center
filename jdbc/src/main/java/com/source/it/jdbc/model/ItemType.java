@@ -4,19 +4,19 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ItemType extends BaseEntity<Long> {
-    private String name;
+    private String itemTypeName;
 
-    public String getName() {
-        return name;
+    public String getItemTypeName() {
+        return itemTypeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItemTypeName(String itemTypename) {
+        this.itemTypeName = itemTypename;
     }
 
     @Override
     public void prepareCreateStatement(PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, name);
+        stmt.setString(1, itemTypeName);
     }
 
     @Override
@@ -31,6 +31,13 @@ public class ItemType extends BaseEntity<Long> {
 
         ItemType type = (ItemType) o;
 
-        return  (type.name == null ? name == null : type.name.equals(name));
+        return  (type.itemTypeName == null ? itemTypeName == null : type.itemTypeName.equals(itemTypeName));
+    }
+
+    @Override
+    public String toString() {
+        return "ItemType{" +
+                "itemTypeName='" + itemTypeName + '\'' +
+                '}';
     }
 }

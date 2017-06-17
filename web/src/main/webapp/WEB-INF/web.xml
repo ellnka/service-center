@@ -6,6 +6,16 @@
          version="3.0">
 
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:services-context.xml</param-value>
+    </context-param>
+
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>com.source.it.web.servlets.LoginServlet</servlet-class>
@@ -24,6 +34,35 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>orderManagementServlet</servlet-name>
+        <servlet-class>com.source.it.web.servlets.OrderManagementServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderManagementServlet</servlet-name>
+        <url-pattern>/orderManagement</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>clientServlet</servlet-name>
+        <servlet-class>com.source.it.web.servlets.ClientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clientServlet</servlet-name>
+        <url-pattern>/clientPage</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>com.source.it.web.filters.SecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/main</url-pattern>
+        <url-pattern>/orderManagement</url-pattern>
+        <url-pattern>/clientPage</url-pattern>
+    </filter-mapping>
+
     <listener>
         <listener-class>com.source.it.web.listeners.ContextInitializerListener</listener-class>
     </listener>
@@ -33,5 +72,15 @@
             <max-age>1800</max-age>
         </cookie-config>
     </session-config>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/resources/html/404.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/resources/html/500.html</location>
+    </error-page>
 
 </web-app>

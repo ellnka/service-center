@@ -17,6 +17,6 @@ public abstract class BaseEntity <PK extends Serializable> implements BaseEntity
 
     @Override
     public int hashCode() {
-        return (int)(((Long)id).longValue() % Integer.MAX_VALUE);
+        return id == null ? 0 : (int)(((Long)id).longValue() % Integer.MAX_VALUE);
     }
 }

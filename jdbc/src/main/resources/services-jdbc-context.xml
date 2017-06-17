@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.source.it.jdbc"/>
+    <context:annotation-config/>
+
+    <context:property-placeholder location="classpath*:db.properties"/>
+
+    <bean id="dataSource" class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
+          <property name="user" value="${db.user}"/>
+          <property name="password" value="${db.password}"/>
+          <property name="port" value="${db.port}"/>
+          <property name="serverName" value="${db.host}"/>
+          <property name="databaseName" value="${db.schema}"/>
+    </bean>
+
+    <bean id="mySqlUserDaoFactory"
+         class="com.source.it.jdbc.dao.MySqlDaoFactory"
+         factory-method="getDaoFactory">
+          <constructor-arg name="type" value="com.source.it.jdbc.model.User"/>
+    </bean>
+
+    <bean id="mySqlUserRoleDaoFactory"
+         class="com.source.it.jdbc.dao.MySqlDaoFactory"
+         factory-method="getDaoFactory">
+          <constructor-arg name="type" value="com.source.it.jdbc.model.User"/>
+    </bean>
+
+    <bean id="mySqlItemFactory"
+          class="com.source.it.jdbc.dao.MySqlDaoFactory"
+          factory-method="getDaoFactory">
+        <constructor-arg name="type" value="com.source.it.jdbc.model.Item"/>
+    </bean>
+
+    <bean id="mySqlItemTypeFactory"
+          class="com.source.it.jdbc.dao.MySqlDaoFactory"
+          factory-method="getDaoFactory">
+        <constructor-arg name="type" value="com.source.it.jdbc.model.ItemType"/>
+    </bean>
+
+    <bean id="mySqlWarrantyPeriodFactory"
+          class="com.source.it.jdbc.dao.MySqlDaoFactory"
+          factory-method="getDaoFactory">
+        <constructor-arg name="type" value="com.source.it.jdbc.model.WarrantyPeriod"/>
+    </bean>
+
+    <bean id="mySqlManufactureFactory"
+          class="com.source.it.jdbc.dao.MySqlDaoFactory"
+          factory-method="getDaoFactory">
+        <constructor-arg name="type" value="com.source.it.jdbc.model.Manufacture"/>
+    </bean>
+
+    <bean id="mySqlOrderDaoFactory"
+          class="com.source.it.jdbc.dao.MySqlDaoFactory"
+          factory-method="getDaoFactory">
+        <constructor-arg name="type" value="com.source.it.jdbc.model.Order"/>
+    </bean>
+
+    <bean id="userDao" class="com.source.it.jdbc.dao.GenericDaoImpl"
+         factory-bean="mySqlUserDaoFactory"
+         factory-method="getDao"/>
+
+    <bean id="userRoleDao" class="com.source.it.jdbc.dao.GenericDaoImpl"
+         factory-bean="mySqlUserRoleDaoFactory"
+         factory-method="getDao"/>
+
+    <bean id="itemDao" class="com.source.it.jdbc.dao.GenericDaoImpl"
+          factory-bean="mySqlItemFactory"
+          factory-method="getDao"/>
+
+    <bean id="itemTypeDao" class="com.source.it.jdbc.dao.GenericDaoImpl"
+          factory-bean="mySqlItemTypeFactory"
+          factory-method="getDao"/>
+
+    <bean id="warrantyPeriodDao" class="com.source.it.jdbc.dao.GenericDaoImpl"
+          factory-bean="mySqlWarrantyPeriodFactory"
+          factory-method="getDao"/>
+
+    <bean id="manufactureDao" class="com.source.it.jdbc.dao.GenericDaoImpl"
+          factory-bean="mySqlManufactureFactory"
+          factory-method="getDao"/>
+
+    <bean id="orderDao"
+          class="com.source.it.jdbc.dao.GenericDaoImpl"
+          factory-bean="mySqlOrderDaoFactory"
+          factory-method="getDao"/>
+
+    <bean id="mySqlManagerFactory" class="com.source.it.jdbc.manager.MySqlManagerFactory"/>
+
+    <bean id="userManager"
+         class="com.source.it.jdbc.manager.UserManager"
+         factory-bean="mySqlManagerFactory"
+         factory-method="getUserManager"/>
+
+    <bean id="userRoleManager"
+         class="com.source.it.jdbc.manager.UserRoleManager"
+         factory-bean="mySqlManagerFactory"
+         factory-method="getUserRoleManager"/>
+
+    <bean id="warrantyPeriodManager"
+          class="com.source.it.jdbc.manager.WarrantyPeriodManager"
+          factory-bean="mySqlManagerFactory"
+          factory-method="getWarrantyPeriodManager"/>
+
+    <bean id="manufactureManager"
+          class="com.source.it.jdbc.manager.ManufactureManager"
+          factory-bean="mySqlManagerFactory"
+          factory-method="getManufactureManager"/>
+
+    <bean id="itemTypeManager"
+          class="com.source.it.jdbc.manager.ItemTypeManager"
+          factory-bean="mySqlManagerFactory"
+          factory-method="getItemTypeManager"/>
+
+    <bean id="itemManager"
+          class="com.source.it.jdbc.manager.ItemTypeManager"
+          factory-bean="mySqlManagerFactory"
+          factory-method="getItemManager"/>
+    <bean id="orderManager"
+          class="com.source.it.jdbc.manager.ItemTypeManager"
+          factory-bean="mySqlManagerFactory"
+          factory-method="getOrderManager"/>
+
+</beans>

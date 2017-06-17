@@ -6,6 +6,7 @@ import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.utils.SqlGeneratorUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
 import java.io.Serializable;
@@ -17,16 +18,13 @@ import static com.source.it.jdbc.utils.SqlGeneratorUtils.*;
 public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> implements GenericDao <T, PK> {
     private static final Logger LOGGER = Logger.getLogger(GenericDaoImpl.class);
     private Class<T> type;
+
+    @Autowired
     protected DataSource dataSource;
 
-    protected GenericDaoImpl(DataSource dataSource, Class<T> type) {
-        this.dataSource = dataSource;
+    protected GenericDaoImpl(Class<T> type) {
         this.type = type;
         LOGGER.debug("GenericDaoImpl created");
-    }
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
     }
 
     @Override
@@ -103,11 +101,12 @@ public class GenericDaoImpl <T extends BaseEntity<PK>, PK extends Serializable> 
                 return;
             } else {
                 con.rollback();
-                throw new GenericDaoException("Error updating user 0 or more than 1 user was found. ROLLBACK!");
+                throw new GenericDaoException("Error updating "+ objectToUpdate.getClass().getSimpleName()
+                        + " 0 or more than 1 user was found. ROLLBACK!");
             }
 
         } catch (SQLException e) {
-            throw new GenericDaoException("Error updating user", e);
+            throw new GenericDaoException("Error updating " + objectToUpdate.getClass().getSimpleName(), e);
         }
 
     }

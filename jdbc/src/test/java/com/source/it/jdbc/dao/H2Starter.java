@@ -2,6 +2,8 @@ package com.source.it.jdbc.dao;
 
 import org.h2.jdbcx.JdbcDataSource;
 import org.h2.tools.Server;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -12,11 +14,12 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class H2Starter {
-    private static final String H2_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL";
-    private static Server server;
+    @Value("${db.url}")
+    private  final String H2_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL";
+    private Server server;
 
     @BeforeSuite
-    public static void startH2() throws SQLException {
+    public  void startH2() throws SQLException {
         server =  Server.createTcpServer("-tcpPort", "9123", "-tcpAllowOthers");
         server.start();
         String content = null;
@@ -36,7 +39,7 @@ public class H2Starter {
     }
 
     @AfterSuite
-    public static void shutDownH2() {
+    public void shutDownH2() {
         server.stop();
     }
 }

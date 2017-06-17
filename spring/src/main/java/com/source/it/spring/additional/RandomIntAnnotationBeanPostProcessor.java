@@ -4,7 +4,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.Random;
 
@@ -18,7 +17,7 @@ public class RandomIntAnnotationBeanPostProcessor implements BeanPostProcessor {
                 Random random = new Random();
                 int min = annotation.min();
                 int max = annotation.max();
-                int value = min + random.nextInt(max - min);
+                int value = min + random.nextInt(max - min + 1);
                 ReflectionUtils.setField(field, bean, value);
             }
         }

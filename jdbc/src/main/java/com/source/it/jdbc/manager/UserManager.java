@@ -4,6 +4,7 @@ import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.model.User;
 import com.source.it.jdbc.utils.SqlGeneratorUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -15,11 +16,9 @@ import static com.source.it.jdbc.utils.SqlGeneratorUtils.generateSelectByFieldSq
 
 public class UserManager {
     private static final Logger LOGGER = Logger.getLogger(UserManager.class);
-    protected DataSource dataSource;
 
-    public UserManager(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    @Autowired
+    protected DataSource dataSource;
 
     public User getUserByLogin(String login) {
         try (Connection con = dataSource.getConnection()) {

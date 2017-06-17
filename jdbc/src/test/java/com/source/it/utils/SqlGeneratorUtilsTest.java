@@ -14,13 +14,13 @@ public class SqlGeneratorUtilsTest {
     public void testGenerateSelectSqlForItemType() {
         //Given
         ItemType itemType = new ItemType();
-        itemType.setName("Test");
+        itemType.setItemTypeName("Test");
 
         //When
         String sql = generateSelectSql(itemType);
 
         //Then
-        assertEquals(sql, "SELECT IT.ID, IT.NAME FROM ITEM_TYPES IT WHERE IT.ID=?");
+        assertEquals(sql, "SELECT IT.ID, IT.ITEMTYPENAME FROM ITEM_TYPES IT WHERE IT.ID=?");
 
     }
 
@@ -29,13 +29,13 @@ public class SqlGeneratorUtilsTest {
         //Given
         WarrantyPeriod wp = new WarrantyPeriod();
         wp.setDays(365);
-        wp.setName("1 year");
+        wp.setWpName("1 year");
 
         //When
         String sql = generateSelectSql(wp);
 
         //Then
-        assertEquals(sql, "SELECT WP.ID, WP.DAYS, WP.NAME FROM WARRANTY_PERIODS WP WHERE WP.ID=?");
+        assertEquals(sql, "SELECT WP.ID, WP.DAYS, WP.WPNAME FROM WARRANTY_PERIODS WP WHERE WP.ID=?");
     }
 
     @Test
@@ -71,15 +71,15 @@ public class SqlGeneratorUtilsTest {
 
         WarrantyPeriod wp = new WarrantyPeriod();
         wp.setDays(365);
-        wp.setName("1 year");
+        wp.setWpName("1 year");
 
         Manufacture manufacture = new Manufacture();
-        manufacture.setName("Philips");
+        manufacture.setManufactureName("Philips");
         manufacture.setId(1L);
 
         ItemType itemType = new ItemType();
         itemType.setId(1L);
-        itemType.setName("Cell Phone");
+        itemType.setItemTypeName("Cell Phone");
 
         item.setWarrantyPeriod(wp);
         item.setManufacture(manufacture);
@@ -89,7 +89,7 @@ public class SqlGeneratorUtilsTest {
         String sql = generateSelectSql(item);
 
         //Then
-        assertEquals(sql, "SELECT I.ID, I.MANUFACTURE_ID, I.ITEM_TYPE_ID, I.WARRANTY_PERIOD_ID, I.DATEOFSALE, I.SERIALNUMBER, M.NAME, IT.NAME, WP.DAYS, WP.NAME FROM ITEMS I JOIN MANUFACTURES M ON I.MANUFACTURE_ID=M.ID JOIN ITEM_TYPES IT ON I.ITEM_TYPE_ID=IT.ID JOIN WARRANTY_PERIODS WP ON I.WARRANTY_PERIOD_ID=WP.ID WHERE I.ID=?");
+        assertEquals(sql, "SELECT I.ID, I.MANUFACTURE_ID, I.ITEM_TYPE_ID, I.WARRANTY_PERIOD_ID, I.DATEOFSALE, I.SERIALNUMBER, M.MANUFACTURENAME, IT.ITEMTYPENAME, WP.DAYS, WP.WPNAME FROM ITEMS I JOIN MANUFACTURES M ON I.MANUFACTURE_ID=M.ID JOIN ITEM_TYPES IT ON I.ITEM_TYPE_ID=IT.ID JOIN WARRANTY_PERIODS WP ON I.WARRANTY_PERIOD_ID=WP.ID WHERE I.ID=?");
     }
 
     @Test

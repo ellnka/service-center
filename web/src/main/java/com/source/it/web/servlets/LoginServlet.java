@@ -45,7 +45,7 @@ public class LoginServlet extends AbstractServiceServlet {
                 } else {
                     session.setAttribute(USER, user);
                     session.setAttribute(LOGIN_FAILED, false);
-                    resp.sendRedirect(LOGIN_PAGE);
+                    resp.sendRedirect(MAIN_PAGE);
                 }
             }
     }

@@ -2,18 +2,17 @@ package com.source.it.jdbc.utils;
 
 import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.model.BaseEntityInterface;
+import com.source.it.jdbc.model.Status;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.lang.String.format;
 
@@ -34,21 +33,31 @@ public class SqlGeneratorUtils {
         String additionalFromPart = "";
         String joins = "";
 
-        Map<String, List<String>> namesMap = new LinkedHashMap<>();
-        getDeclaredFields(entity, namesMap);
+        Map<String, Pair<String, List<String>>>  namesMap = new LinkedHashMap<>();
+        getDeclaredFields(entity, entity.getClass().getSimpleName(), namesMap);
         String fromPart = getNamesString(entity, pair, namesMap, true);
 
         namesMap.remove(entity.getClass().getSimpleName());
-        for (Map.Entry<String, List<String>> entry : namesMap.entrySet()) {
+        for (Map.Entry<String, Pair<String, List<String>>> entry : namesMap.entrySet()) {
             Pair<String, String> localPair = getTableNameFromClassName(entry.getKey());
-            for (String name : entry.getValue()) {
+            for (String name : entry.getValue().getRight()) {
                 additionalFromPart += ", " + localPair.getValue() + "." + name.toUpperCase();
             }
             additionalFromPart += " ";
             joins += " JOIN " + localPair.getKey() + " " + localPair.getValue() + " ON "
-                    + pair.getValue() + "." + getForeignKeyFieldName(entry.getKey()) + "="
+                    + getTableNameFromClassName(entry.getValue().getLeft()).getRight() + "." + getForeignKeyFieldName(entry.getKey()) + "="
                     + localPair.getValue() + ".ID";
         }
+
+        /*Fix Exception in GenericDaoImplOrderTest.testUpdateOrder -
+        * org.h2.jdbc.JdbcSQLException: Column "O.WARRANTY_PERIOD_ID" not found; SQL statement:
+        SELECT O.ID, O.USER_ID, O.ITEM_ID, O.DATE, O.WARRANTY, O.STATUS, UR.ROLE, U.NAME, U.LASTNAME,
+        U.LOGIN, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, M.MANUFACTURENAME, IT.ITEMTYPENAME, WP.DAYS,
+        WP.WPNAME, I.MANUFACTURE_ID, I.ITEM_TYPE_ID, I.WARRANTY_PERIOD_ID, I.DATEOFSALE, I.SERIALNUMBER
+        FROM ORDERS O JOIN USER_ROLES UR ON O.USER_ROLE_ID=UR.ID JOIN USERS U ON O.USER_ID=U.ID
+        JOIN MANUFACTURES M ON O.MANUFACTURE_ID=M.ID JOIN ITEM_TYPES IT ON O.ITEM_TYPE_ID=IT.ID
+        JOIN WARRANTY_PERIODS WP ON O.WARRANTY_PERIOD_ID=WP.ID JOIN ITEMS I ON O.ITEM_ID=I.ID WHERE O.ID=? [42122-195]
+        * */
 
         return format(SELECT_SQL_STRING, pair.getValue(), fromPart,
                 additionalFromPart, pair.getKey() + " " + pair.getValue(),
@@ -58,12 +67,13 @@ public class SqlGeneratorUtils {
     public static String generateCreateSql(BaseEntityInterface entity) {
         String classname = entity.getClass().getSimpleName();
         Pair<String, String> pair = getTableNameFromClassName(classname);
-        Map<String, List<String>> namesMap = new LinkedHashMap<>();
-        getDeclaredFields(entity, namesMap);
+        Map<String, Pair<String, List<String>>> namesMap = new LinkedHashMap<>();
+        getDeclaredFields(entity, classname, namesMap);
         String namesString = getNamesString(entity, pair, namesMap, false).replaceFirst(", ", "");
         String valuesString = "";
         int index = 0;
-        while (index < namesMap.get(classname).size() - 1) {
+
+        while (index < namesMap.get(classname).getRight().size() - 1) {
             valuesString += "?, ";
             ++index;
         }
@@ -80,8 +90,8 @@ public class SqlGeneratorUtils {
     public static String generateUpdateSql(BaseEntityInterface entity) {
         String classname = entity.getClass().getSimpleName();
         Pair<String, String> pair = getTableNameFromClassName(classname);
-        Map<String, List<String>> namesMap = new LinkedHashMap<>();
-        getDeclaredFields(entity, namesMap);
+        Map<String, Pair<String, List<String>>> namesMap = new LinkedHashMap<>();
+        getDeclaredFields(entity, classname, namesMap);
         String valuesString = "";
 
         for (Field field : entity.getClass().getDeclaredFields()) {
@@ -117,9 +127,9 @@ public class SqlGeneratorUtils {
     }
 
     private static String getNamesString(BaseEntityInterface entity, Pair<String, String> pair,
-                                         Map<String, List<String>> namesMap, boolean addTableShorName) {
+                                         Map<String, Pair<String, List<String>>>  namesMap, boolean addTableShorName) {
         String namesString = "";
-        for (String name : namesMap.get(entity.getClass().getSimpleName())) {
+        for (String name : namesMap.get(entity.getClass().getSimpleName()).getRight()) {
             namesString += ", " + (addTableShorName ?  pair.getValue() + "." : "") + name.toUpperCase();
         }
         return namesString;
@@ -139,11 +149,13 @@ public class SqlGeneratorUtils {
                     field.set(entity, rs.getString(field.getName().toUpperCase()));
                 } else if (field.getType().equals(Date.class)) {
                     field.set(entity, rs.getDate(field.getName().toUpperCase()));
+                } else if (field.getType().equals(Status.class)) {
+                    field.set(entity, Status.valueOf(rs.getString(field.getName().toUpperCase())));
                 } else if ((inner = getFieldIfNotNull(field, entity)) instanceof BaseEntityInterface) {
                     fillOneEntityFromResultSet(rs, (BaseEntityInterface) inner);
                     field.set(entity, inner);
                 }
-            } catch (IllegalAccessException | InstantiationException e) {
+            } catch (Exception e) {
                 throw new GenericDaoException("cannot parse sql response for " + entity.getClass().getSimpleName()
                         + "exception in field '" + field.getName() + "'. Root cause is ", e);
             }
@@ -183,7 +195,7 @@ public class SqlGeneratorUtils {
         return new ImmutablePair<>(tableName, tableShortName);
     }
 
-    private static void getDeclaredFields(BaseEntityInterface<Long> entity, Map<String, List<String>> namesMap) {
+    private static void getDeclaredFields(BaseEntityInterface<Long> entity, String ownerEntity, Map<String, Pair<String, List<String>>> namesMap) {
         List<String> names = new ArrayList<>();
         for (Field field : entity.getClass().getDeclaredFields()) {
             try {
@@ -191,24 +203,31 @@ public class SqlGeneratorUtils {
                 Object o = getFieldIfNotNull(field, entity);
                 if (o instanceof BaseEntityInterface) {
                     names.add(getForeignKeyFieldName(o.getClass().getSimpleName()));
-                    getDeclaredFields((BaseEntityInterface) o, namesMap);
+                    namesMap.put(entity.getClass().getSimpleName(), new ImmutablePair<>(ownerEntity, names));
+                    getDeclaredFields((BaseEntityInterface) o, entity.getClass().getSimpleName(), namesMap);
                 } else {
                     names.add(field.getName());
                 }
-            } catch (IllegalAccessException|InstantiationException e) {
+            } catch (Exception e) {
                 throw new GenericDaoException("cannot create sql query for " + entity.getClass().getSimpleName()
                         + "exception in field '" + field.getName() + "'. Root cause is ", e);
             }
         }
-        namesMap.put(entity.getClass().getSimpleName(), names);
+        namesMap.put(entity.getClass().getSimpleName(), new ImmutablePair<>(ownerEntity, names));
     }
 
-    private static Object getFieldIfNotNull(Field field, BaseEntityInterface entity) throws IllegalAccessException, InstantiationException {
+    private static Object getFieldIfNotNull(Field field, BaseEntityInterface entity) throws Exception {
         if (field == null) {
             return null;
         }
-        return (field.get(entity) == null)
-                ? field.getType().newInstance()
-                : field.get(entity);
+        if (field.get(entity) != null) {
+            return field.get(entity);
+        } else if ("java.sql.Date".equals(field.getType().getName())) {
+            return new Date(0L);
+        } else if (field.getType().isEnum()){
+            return Status.NEW;
+        } else {
+            return field.getType().newInstance();
+        }
     }
 }

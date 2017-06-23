@@ -46,9 +46,9 @@
       <table border="0" align="right">
         <tr>
           <td>
-            <button type="submit" value="logout" name="logout"
+            <button type="submit" value="logout" name="logout" title="Logout"
                     style="background-color:transparent; border-color:transparent;">
-              <img src="./resources/images/logout_button_0.png" height="20" width="80"/>
+              <img src="./resources/images/logout.jpg" height="20" width="80"/>
             </button>
           </td>
         </tr>
@@ -58,30 +58,4 @@
 </c:choose>
 </body>
 </html>
-
-
-<%--<form action="/services/login" method="post">
-  <table border="0" align="right">
-    <tr>
-      <td>Login:</td>
-      <td>
-        <input type="text" name="login"/>
-      </td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td>
-        <input type="password" name="password"/>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" align="center">
-        <input type="submit" value="ok" name="ok" />
-      </td>
-      <td colspan="1" align="center">
-        <input type="submit" value="register" name="register" />
-      </td>
-    </tr>
-  </table>
-</form>--%>
 </body>

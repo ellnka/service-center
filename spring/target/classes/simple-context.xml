@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <context:annotation-config/>
+    <context:property-placeholder location="application.properties"/>
+    <!--<bean id="simpleBean" class="com.source.it.spring.beans.SimpleBean"
+            lazy-init="false">
+        <constructor-arg name="x" value="15"/>
+        <constructor-arg name="str" value="Super String"/>
+        <constructor-arg name="b" value="true"/>
+    </bean>-->
+
+    <bean id="simpleBean"
+          class="com.source.it.spring.beans.SimpleBean"
+
+          scope="singleton"
+          destroy-method="destroy">
+        <property name="x" value="20"/>
+        <property name="str" value="New Super String"/>
+        <property name="b" value="true"/>
+     </bean>
+
+    <bean id="complicatedBean" class="com.source.it.spring.beans.ComplicatedBean">
+        <property name="qualifier" ref="qualifier"/>
+    </bean>
+
+    <bean id="qualifier" class="java.lang.String" >
+        <constructor-arg value="My Super Complicated String"/>
+    </bean>
+
+
+    <bean id="beanWithProperties"
+          class="com.source.it.spring.beans.BeanWithProperties"/>
+</beans>

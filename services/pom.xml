@@ -7,16 +7,17 @@
         <groupId>source-it</groupId>
         <version>0.9</version>
     </parent>
+
+
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-
-    <artifactId>services</artifactId>
+    <artifactId>services-services</artifactId>
     <name>Services-center :: services</name>
 
     <dependencies>
         <dependency>
             <groupId>source-it</groupId>
-            <artifactId>jdbc</artifactId>
+            <artifactId>services-jdbc</artifactId>
             <version>0.9</version>
         </dependency>
 
@@ -34,7 +35,43 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>services-services</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
 
 
 </project>

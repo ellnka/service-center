@@ -4,7 +4,7 @@
                      xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
     <appender name="jdbc" class="org.apache.log4j.RollingFileAppender">
-        <param name="maxFileSize" value="100KB" />
+        <param name="maxFileSize" value="10Mb" />
         <param name="maxBackupIndex" value="5" />
         <param name="file" value="${catalina.home}/logs/service-center-jdbc.log" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -13,9 +13,18 @@
         </layout>
     </appender>
 
+    <appender name="common" class="org.apache.log4j.RollingFileAppender">
+        <param name="maxFileSize" value="10Mb" />
+        <param name="maxBackupIndex" value="5" />
+        <param name="file" value="${catalina.home}/logs/common.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </layout>
+    </appender>
 
     <appender name="web" class="org.apache.log4j.RollingFileAppender">
-        <param name="maxFileSize" value="100KB" />
+        <param name="maxFileSize" value="10Mb" />
         <param name="maxBackupIndex" value="5" />
         <param name="file" value="${catalina.home}/logs/service-center-web.log" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -25,7 +34,7 @@
     </appender>
 
     <appender name="services" class="org.apache.log4j.RollingFileAppender">
-        <param name="maxFileSize" value="100KB" />
+        <param name="maxFileSize" value="10Mb" />
         <param name="maxBackupIndex" value="5" />
         <param name="file" value="${catalina.home}/logs/service-center-services.log" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -40,7 +49,7 @@
     </logger>
 
     <logger name="com.source.it.services">
-        <level value="INFO"/>
+        <level value="DEBUG"/>
         <appender-ref ref="services"/>
     </logger>
 
@@ -52,6 +61,7 @@
 
     <root>
         <level value="DEBUG" />
+        <appender-ref ref="common"/>
     </root>
 
 </log4j:configuration>

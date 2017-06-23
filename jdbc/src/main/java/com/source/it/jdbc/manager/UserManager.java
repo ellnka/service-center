@@ -4,6 +4,7 @@ import com.source.it.jdbc.exceptions.GenericDaoException;
 import com.source.it.jdbc.model.User;
 import com.source.it.jdbc.utils.SqlGeneratorUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,13 +15,10 @@ import java.sql.SQLException;
 import static com.source.it.jdbc.utils.SqlGeneratorUtils.generateSelectByFieldSql;
 
 public class UserManager {
-    //private final static String SELECT_BY_LOGIN = "SELECT U.ID, U.NAME, U.LASTNAME, U.PASSWORD, U.EMAIL, U.USER_ROLE_ID, UR.ROLE FROM USERS U JOIN USER_ROLES UR ON U.USER_ROLE_ID = UR.ID WHERE U.LOGIN = ?";
     private static final Logger LOGGER = Logger.getLogger(UserManager.class);
-    protected DataSource dataSource;
 
-    public UserManager(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    @Autowired
+    protected DataSource dataSource;
 
     public User getUserByLogin(String login) {
         try (Connection con = dataSource.getConnection()) {
@@ -35,8 +33,11 @@ public class UserManager {
                 return user;
             }
         } catch (SQLException e) {
+            LOGGER.error("Exception during connection to db - ", e);
             throw new GenericDaoException("Error reading user from DB");
         }
+        LOGGER.info("Error reading "
+                +  " user from DB - no user was found with login = " + login);
        throw new GenericDaoException("Error reading "
                 +  " user from DB - no user was found with login = " + login);
     }

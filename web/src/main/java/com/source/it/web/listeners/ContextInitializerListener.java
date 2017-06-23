@@ -11,8 +11,5 @@ public class ContextInitializerListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        /*ThreadPoolExecutor tpe = (ThreadPoolExecutor)sce.getServletContext().getAttribute("ThreadPool");
-        tpe.shutdownNow();*/
-
     }
 }

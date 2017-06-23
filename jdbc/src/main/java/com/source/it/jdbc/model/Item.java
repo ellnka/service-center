@@ -53,12 +53,16 @@ public class Item extends BaseEntity<Long> {
 
     @Override
     public void prepareCreateStatement(PreparedStatement stmt) throws SQLException {
-
+        stmt.setLong(1, manufacture.getId());
+        stmt.setLong(2, itemType.getId());
+        stmt.setLong(3, warrantyPeriod.getId());
+        stmt.setDate(4, dateOfSale);
+        stmt.setString(5, serialNumber);
     }
 
     @Override
     public void prepareReadOrDeleteStatement(PreparedStatement stmt, Long id) throws SQLException {
-
+        stmt.setLong(1, id);
     }
 
     @Override
@@ -72,8 +76,18 @@ public class Item extends BaseEntity<Long> {
         if (itemType != null ? !itemType.equals(item.itemType) : item.itemType != null) return false;
         if (warrantyPeriod != null ? !warrantyPeriod.equals(item.warrantyPeriod) : item.warrantyPeriod != null)
             return false;
-        if (dateOfSale != null ? !dateOfSale.equals(item.dateOfSale) : item.dateOfSale != null) return false;
+        if (dateOfSale != null ? !dateOfSale.toString().equals(item.dateOfSale.toString()) : item.dateOfSale != null) return false;
         return !(serialNumber != null ? !serialNumber.equals(item.serialNumber) : item.serialNumber != null);
+    }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "manufacture=" + manufacture +
+                ", itemType=" + itemType +
+                ", warrantyPeriod=" + warrantyPeriod +
+                ", dateOfSale=" + dateOfSale +
+                ", serialNumber='" + serialNumber + '\'' +
+                '}';
     }
 }

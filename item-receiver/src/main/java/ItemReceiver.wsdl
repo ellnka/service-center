@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ItemReceiver" targetNamespace="http://itemreceiver.it.source.com/" xmlns:ns1="http://itemreceiver.it.source.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://itemreceiver.it.source.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://itemreceiver.it.source.com/">
+  <xs:element name="processItem" type="tns:processItem"/>
+  <xs:element name="processItemResponse" type="tns:processItemResponse"/>
+  <xs:complexType name="processItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="item" type="tns:item"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateOfSale" type="xs:string"/>
+      <xs:element minOccurs="0" name="itemType" type="xs:string"/>
+      <xs:element minOccurs="0" name="manufacture" type="xs:string"/>
+      <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
+      <xs:element name="warrantyPeriod" type="xs:int"/>
+      <xs:element minOccurs="0" name="wpName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="processItemResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemFault" type="tns:ItemFault"/>
+  <xs:complexType name="ItemFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="processItem">
+    <wsdl:part name="parameters" element="ns1:processItem">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processItemResponse">
+    <wsdl:part name="parameters" element="ns1:processItemResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ItemFault">
+    <wsdl:part name="ItemFault" element="ns1:ItemFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ItemReceiver">
+    <wsdl:operation name="processItem">
+      <wsdl:input name="processItem" message="ns1:processItem">
+    </wsdl:input>
+      <wsdl:output name="processItemResponse" message="ns1:processItemResponse">
+    </wsdl:output>
+      <wsdl:fault name="ItemFault" message="ns1:ItemFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

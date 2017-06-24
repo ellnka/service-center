@@ -18,6 +18,7 @@ public class ServletConstants {
     public final static String USER           = "user";
     public final static String REGISTER       = "register";
     public final static String ORDER          = "order";
+    public final static String ORDER_ID       = "order_id";
     public final static String ORDERS         = "orders";
     public final static String CREATE_ORDER   = "create_order";
     public final static String SEARCH_ORDER   = "search_for_order";
@@ -40,6 +41,7 @@ public class ServletConstants {
     public final static String LOGIN_JSP            = "/JSP/login.jsp";
     public final static String ORDER_MANAGEMENT_JSP = "/JSP/order-management.jsp";
     public final static String CLIENT_PAGE_JSP      = "/JSP/client-page.jsp";
+    public final static String PAIMENT_PAGE_JSP     = "/JSP/payment-page.jsp";
 
     /*Path constants*/
     public final static String LOGIN_PAGE       = "/services/login";

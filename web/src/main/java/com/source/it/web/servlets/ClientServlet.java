@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import static com.source.it.web.utils.ServletConstants.*;
 
@@ -30,11 +31,21 @@ public class ClientServlet extends AbstractServiceServlet {
         resp.setContentType(TEXT_HTML);
         HttpSession session = req.getSession();
         User user = (User)session.getAttribute(USER);
+        Map<String, String> params = getRequestParams(req);
+        String orderId = params.get(ORDER_ID);
+        if (orderId != null) {
+            req.setAttribute(ORDER, orderService.getOrderById(Long.parseLong(orderId)));
+        }
         if (user !=  null) {
             List<Order> orders = orderService.getAllOrdersByUser(user);
             req.setAttribute(ORDERS, orders);
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(CLIENT_PAGE_JSP);
         dispatcher.forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req, resp);
     }
 }

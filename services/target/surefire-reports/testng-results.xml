@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="com.source.it.services.UserServiceTest" duration-ms="415" started-at="2017-06-24T12:04:09Z" finished-at="2017-06-24T12:04:09Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="415" started-at="2017-06-24T12:04:09Z" finished-at="2017-06-24T12:04:09Z">
+      <class name="com.source.it.services.UserServiceTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:com.source.it.services.UserServiceTest@23e028a9]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="5" started-at="2017-06-24T15:04:09Z" finished-at="2017-06-24T15:04:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.source.it.services.UserServiceTest@23e028a9]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="374" started-at="2017-06-24T15:04:09Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-06-24T15:04:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.source.it.services.UserServiceTest@23e028a9]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="2" started-at="2017-06-24T15:04:09Z" finished-at="2017-06-24T15:04:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.source.it.services.UserServiceTest.testGetByUnexistingLogin()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.source.it.services.UserServiceTest@23e028a9]" name="setUp" is-config="true" duration-ms="22" started-at="2017-06-24T15:04:09Z" finished-at="2017-06-24T15:04:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testGetByUnexistingLogin()[pri:0, instance:com.source.it.services.UserServiceTest@23e028a9]" name="testGetByUnexistingLogin" duration-ms="6" started-at="2017-06-24T15:04:09Z" finished-at="2017-06-24T15:04:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetByUnexistingLogin -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.source.it.services.UserServiceTest@23e028a9]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2017-06-24T15:04:09Z" finished-at="2017-06-24T15:04:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.source.it.services.UserServiceTest.testGetByUnexistingLogin()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.source.it.services.UserServiceTest@23e028a9]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2017-06-24T15:04:09Z" finished-at="2017-06-24T15:04:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- com.source.it.services.UserServiceTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- com.source.it.services.UserServiceTest -->
+</testng-results>

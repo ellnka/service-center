@@ -39,4 +39,14 @@ public class OrderService {
     public long createOrder(Order order) {
         return orderDao.create(order);
     }
+
+    public boolean update(Order order) {
+        try {
+            orderDao.update(order);
+        } catch (GenericDaoException e) {
+            LOGGER.error("Error updating order " + order, e);
+            return false;
+        }
+        return true;
+    }
 }

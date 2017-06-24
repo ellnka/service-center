@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Built-By: kblyumkin
+groupId: source-it
+artifactId: item-receiver
+version: 0.9
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.7.0_79
+

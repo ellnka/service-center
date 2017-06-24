@@ -98,9 +98,16 @@ public class SqlGeneratorUtils {
             try {
                 field.setAccessible(true);
                 Object o = field.get(entity);
+                if (o == null) {
+                    continue;
+                }
                 if (!( o instanceof BaseEntityInterface)) {
                     if (o instanceof Number) {
                         valuesString += ", " + field.getName().toUpperCase() + "=" + o;
+                    } else if (o instanceof Boolean) {
+                        Boolean b = (Boolean) o;
+                        int value = b ? 1 : 0;
+                        valuesString += ", " + field.getName().toUpperCase() + "=" + value;
                     } else {
                         valuesString += ", " + field.getName().toUpperCase() + "='" + o + "'";
                     }
@@ -136,7 +143,15 @@ public class SqlGeneratorUtils {
     }
 
     private static void fillOneEntityFromResultSet(ResultSet rs, BaseEntityInterface entity) throws SQLException {
-        entity.setId(rs.getLong(ID_FIELD));
+        Pair<String, String> tableNameFromClassName
+                = getTableNameFromClassName(entity.getClass().getSimpleName());
+        try {
+            String idFieldName = tableNameFromClassName.getLeft();
+            entity.setId(rs.getLong(
+                    idFieldName.substring(0, idFieldName.length() - 1) + "_" + ID_FIELD));
+        } catch (SQLException e) {
+            entity.setId(rs.getLong(ID_FIELD));
+        }
         for (Field field : entity.getClass().getDeclaredFields()) {
             field.setAccessible(true);
             try {
@@ -224,7 +239,9 @@ public class SqlGeneratorUtils {
             return field.get(entity);
         } else if ("java.sql.Date".equals(field.getType().getName())) {
             return new Date(0L);
-        } else if (field.getType().isEnum()){
+        } else if ("java.lang.Long".equals(field.getType().getName())) {
+            return new Long(0);
+        } else if (field.getType().isEnum()) {
             return Status.NEW;
         } else {
             return field.getType().newInstance();

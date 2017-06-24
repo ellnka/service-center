@@ -1,6 +1,5 @@
 package com.source.it.web.servlets;
 
-import com.source.it.jdbc.dao.GenericDao;
 import com.source.it.jdbc.model.Item;
 import com.source.it.jdbc.model.Order;
 import com.source.it.jdbc.model.Status;

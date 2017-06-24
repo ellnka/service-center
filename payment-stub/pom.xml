@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>service-center</artifactId>
+        <groupId>source-it</groupId>
+        <version>0.9</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>payment-stub</artifactId>
+    <name>Services-center :: payment-stub</name>
+    <groupId>source-it</groupId>
+    <version>0.9</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-wsdl</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <className>com.source.it.payment.stub.impl.PaymentStubImpl</className>
+                            <genWsdl>true</genWsdl>
+                            <attachWsdl>true</attachWsdl>
+                            <outputFile>${project.build.outputDirectory}/PaymentStub.wsdl</outputFile>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <version>${project.version}</version>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                        </manifestEntries>
+                    </archive>
+                    <warName>payment-stub</warName>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

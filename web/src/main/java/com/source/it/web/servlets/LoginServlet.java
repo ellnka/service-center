@@ -2,6 +2,7 @@ package com.source.it.web.servlets;
 
 import com.source.it.jdbc.model.User;
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -30,14 +31,13 @@ public class LoginServlet extends AbstractServiceServlet {
         resp.setContentType(TEXT_HTML);
         HttpSession session = req.getSession(true);
         if (params.get(REGISTER) != null) {
-            getServletContext().getRequestDispatcher(REGISTER_JSP).forward(req, resp);
-        }
-        if (params.get(LOGOUT) != null) {
+            resp.sendRedirect(REGISTER_PAGE);
+        } else if (params.get(LOGOUT) != null) {
             session.removeAttribute(USER);
             getServletContext().getRequestDispatcher(LOGIN_JSP).forward(req, resp);
-        }
-        String login;
-            if ((login = params.get(LOGIN)) != null) {
+        } else {
+            String login;
+            if ((login = params.get(LOGIN)) != null && StringUtils.isNotEmpty(login)) {
                 User user = userService.getUserByLogin(login);
                 if (user == null || !user.getPassword().equals(params.get(PASSWORD))) {
                     session.setAttribute(LOGIN_FAILED, true);
@@ -48,5 +48,6 @@ public class LoginServlet extends AbstractServiceServlet {
                     resp.sendRedirect(MAIN_PAGE);
                 }
             }
+        }
     }
 }

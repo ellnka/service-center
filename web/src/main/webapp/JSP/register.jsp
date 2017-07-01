@@ -2,14 +2,23 @@
 <html>
 <head>
     <title>Services : register page</title>
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/ie.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+  <![endif]-->
 </head>
 <body>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script type="text/javascript" language="javascript" src="resources/scripts/validate.js"></script>
-
+<div class="container">
+  <div id="table-view"/>
   <form action="/services/register" method="post" name="register" onsubmit="return  validateForm()">
-    <table border="0" align="right">
+    <table border="0" align="right"
+           style="alignment-adjust: central; width: 30%; text-align: center; margin-left: 35%;
+                  margin-right: 35%">
       <tr>
         <td>Name:
         </td>
@@ -86,6 +95,7 @@
       </tr>
     </table>
   </form>
-
+  </div>
+</div>
 </body>
 </html>

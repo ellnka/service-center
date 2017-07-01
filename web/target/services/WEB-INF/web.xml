@@ -51,6 +51,14 @@
         <servlet-name>clientServlet</servlet-name>
         <url-pattern>/clientPage</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>clientOrderManagement</servlet-name>
+        <servlet-class>com.source.it.web.servlets.ClientOrderManagementServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clientOrderManagement</servlet-name>
+        <url-pattern>/clientOrderManagement</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>

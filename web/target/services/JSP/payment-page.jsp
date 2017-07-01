@@ -1,16 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Checkout Form</title>
-    <link rel="stylesheet" href="resources/css/card_style.css">
-    <script type="text/javascript" language="javascript" src="resources/scripts/timeoutRedirect.js"></script>
-    <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 <body>
 <c:choose>
@@ -19,7 +8,24 @@
             <div class="checkout-header">
                 <h1 class="checkout-title">
                     Checkout
-                    <span class="checkout-price">$<fmt:formatNumber pattern="#,##" value="${order.amount}"/></span>
+                    <fmt:setLocale value = "en_US"/>
+                    <c:set var="total" value="${0}"/>
+                    <c:choose>
+                        <c:when test="${pay_for_all_enabled}">
+
+                            <c:forEach var="orderToPay" items="${sessionScope.orders_for_payment}">
+                                <c:set var="total" value="${total + orderToPay.amount}"/>
+                            </c:forEach>
+                            <c:set var="amount" value="${total / 100}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="amount" value="${order.amount / 100}"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <span class="checkout-price"><fmt:formatNumber value = "${amount}" type = "currency"/></span>
+
+
+
                 </h1>
             </div>
             <p>
@@ -38,10 +44,12 @@
         </form>
     </c:when>
     <c:otherwise>
-        <c:out value="Payment successful!"/>
-        <script type="text/javascript" language="JavaScript">
-            redirectFunction();
-        </script>
+        <div align="center">
+            <c:out value="Payment successful!"/>
+            <script>
+                setTimeout("location.href = '/services/main';", 5000);
+            </script>
+        </div>
     </c:otherwise>
 </c:choose>
 <c:if test="${paymentSuccessful!=null && !paymentSuccessful}">

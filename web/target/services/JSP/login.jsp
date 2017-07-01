@@ -1,16 +1,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 
-
 <html>
 <head>
-    <title>Login Page</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/ie.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="resources/css/blueprint-css-master/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+  <![endif]-->
 </head>
 <body>
 <c:choose>
   <c:when test="${user == null || user.name.equals('anonymous')}">
     <form action="/services/login" method="post">
-      <table border="0" align="right">
+      <div class="container" style="width: 15%; text-align: right; margin-left: 85%;
+                  margin-right: 0%">
+       <div class="table-view">
+        <table border="0" align="right">
         <tr>
           <td>Login:</td>
           <td> <input type="text" name="login"/></td>
@@ -36,6 +44,8 @@
           </td>
         </tr>
       </table>
+      </div>
+      </div>
     </form>
   </c:when>
   <c:otherwise>
@@ -43,16 +53,14 @@
       <c:out  value="Welcome, ${user.name} ${user.lastName}!"/>
     </div>
     <form action="/services/login" method="post">
-      <table border="0" align="right">
-        <tr>
-          <td>
-            <button type="submit" value="logout" name="logout" title="Logout"
-                    style="background-color:transparent; border-color:transparent;">
-              <img src="./resources/images/logout.jpg" height="20" width="80"/>
-            </button>
-          </td>
-        </tr>
-      </table>
+      <div align="right">
+
+        <button type="submit" value="logout" name="logout" title="Logout"
+                style="background-color:transparent; border-color:transparent;">
+          <img src="./resources/images/logout.jpg" height="20" width="80"/>
+        </button>
+
+      </div>
     </form>
   </c:otherwise>
 </c:choose>

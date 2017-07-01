@@ -25,6 +25,9 @@ public class ServletConstants {
     public final static String ORDER_NUMBER   = "order_number";
     public final static String ORDER_CREATION = "order_creation";
     public final static String SERIAL_NUMBER  = "serial_number";
+    public final static String ORDERS_FOR_PAYMENT  = "orders_for_payment";
+    public final static String PAY_FOR_ALL_ENABLED = "pay_for_all_enabled";
+    public final static String ENABLE_PAYMENT      = "enable_payment";
 
     /*Messages constants*/
     public final static String DATE_ERROR    = "dateError";
@@ -48,6 +51,7 @@ public class ServletConstants {
     public final static String MAIN_PAGE        = "/services/main";
     public final static String ORDER_MANAGEMENT = "/orderManagement";
     public final static String CLIENT_PAGE      = "/clientPage";
+    public final static String REGISTER_PAGE    = "/services/register";
 
     /*Exceptions constants*/
     public final static String NON_UNIQUE_EMAIL = "email_unique";

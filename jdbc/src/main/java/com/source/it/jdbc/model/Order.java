@@ -10,6 +10,7 @@ public class Order extends BaseEntity<Long> {
     private Date date;
     private boolean warranty;
     private Status status;
+    private long amount;
 
     @Override
     public void prepareCreateStatement(PreparedStatement stmt) throws SQLException {
@@ -18,6 +19,7 @@ public class Order extends BaseEntity<Long> {
         stmt.setDate(3, date);
         stmt.setBoolean(4, warranty);
         stmt.setString(5, status.name());
+        stmt.setLong(6, amount);
     }
 
     @Override
@@ -61,6 +63,14 @@ public class Order extends BaseEntity<Long> {
         return status;
     }
 
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
     public void setStatus(Status status) {
         this.status = status;
     }
@@ -76,7 +86,9 @@ public class Order extends BaseEntity<Long> {
         if (user != null ? !user.equals(order.user) : order.user != null) return false;
         if (item != null ? !item.equals(order.item) : order.item != null) return false;
         if (date != null ? !date.toString().equals(order.date.toString()) : order.date != null) return false;
-        return status == order.status;
+        if (status != order.status) return false;
+        return amount ==  order.amount;
+
     }
 
     @Override
@@ -87,6 +99,7 @@ public class Order extends BaseEntity<Long> {
                 ", date=" + date +
                 ", warranty=" + warranty +
                 ", status=" + status +
+                ", amount=" + amount +
                 '}';
     }
 }

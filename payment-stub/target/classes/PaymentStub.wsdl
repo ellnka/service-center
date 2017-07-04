@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PaymentStub" targetNamespace="http://stub.payment.it.source.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://stub.payment.it.source.com/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://stub.payment.it.source.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://stub.payment.it.source.com/">
+  <xs:element name="processPaymentBean" type="tns:processPaymentBean"/>
+  <xs:element name="processPaymentBeanResponse" type="tns:processPaymentBeanResponse"/>
+  <xs:complexType name="processPaymentBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="paymentBean" type="tns:paymentBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="paymentBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="cvc" type="xs:string"/>
+      <xs:element minOccurs="0" name="expDateMonth" type="xs:string"/>
+      <xs:element minOccurs="0" name="expDateYear" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="successful" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="processPaymentBeanResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:paymentBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentFault" type="tns:PaymentFault"/>
+  <xs:complexType name="PaymentFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="PaymentFault">
+    <wsdl:part name="PaymentFault" element="ns1:PaymentFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processPaymentBean">
+    <wsdl:part name="parameters" element="ns1:processPaymentBean">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processPaymentBeanResponse">
+    <wsdl:part name="parameters" element="ns1:processPaymentBeanResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PaymentStub">
+    <wsdl:operation name="processPaymentBean">
+      <wsdl:input name="processPaymentBean" message="ns1:processPaymentBean">
+    </wsdl:input>
+      <wsdl:output name="processPaymentBeanResponse" message="ns1:processPaymentBeanResponse">
+    </wsdl:output>
+      <wsdl:fault name="PaymentFault" message="ns1:PaymentFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Services-Jdbc_test_suite">
+              <span class="suite-name border-passed">Services-Jdbc test suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Services-Jdbc_test_suite">
+                    <span>testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Services-Jdbc_test_suite">
+                    <span class="test-stats">2 tests</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Services-Jdbc_test_suite">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Services-Jdbc_test_suite">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Services-Jdbc_test_suite">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Services-Jdbc_test_suite">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Services-Jdbc_test_suite">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">21 methods,   21 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Services-Jdbc_test_suite" class="hide-methods passed suite-Services-Jdbc_test_suite"> (hide)</a> <!-- hide-methods passed suite-Services-Jdbc_test_suite -->
+                      <a href="#" panel-name="suite-Services-Jdbc_test_suite" class="show-methods passed suite-Services-Jdbc_test_suite"> (show)</a> <!-- show-methods passed suite-Services-Jdbc_test_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Services-Jdbc_test_suite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplItemTest" hash-for-method="testCreateItem">testCreateItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplOrderTest" hash-for-method="testCreateOrder">testCreateOrder</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplOrderTest" hash-for-method="testDeleteItem">testDeleteItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplItemTest" hash-for-method="testDeleteItem">testDeleteItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplTest" hash-for-method="testDeleteUser">testDeleteUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.utils.SqlGeneratorUtilsTest" hash-for-method="testGenerateCreateSqlForUser">testGenerateCreateSqlForUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.utils.SqlGeneratorUtilsTest" hash-for-method="testGenerateDeleteSqlForUser">testGenerateDeleteSqlForUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.utils.SqlGeneratorUtilsTest" hash-for-method="testGenerateSelectSqlForItem">testGenerateSelectSqlForItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.utils.SqlGeneratorUtilsTest" hash-for-method="testGenerateSelectSqlForItemType">testGenerateSelectSqlForItemType</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.utils.SqlGeneratorUtilsTest" hash-for-method="testGenerateSelectSqlForUser">testGenerateSelectSqlForUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.utils.SqlGeneratorUtilsTest" hash-for-method="testGenerateSelectSqlForWarrantyPeriod">testGenerateSelectSqlForWarrantyPeriod</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.utils.SqlGeneratorUtilsTest" hash-for-method="testGenerateUserUpdateSql">testGenerateUserUpdateSql</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.manager.UserDaoManagerTest" hash-for-method="testGetUserByLogin">testGetUserByLogin</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.manager.UserDaoManagerTest" hash-for-method="testGetUserByLoginForUnexistingUser">testGetUserByLoginForUnexistingUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplItemTest" hash-for-method="testReadExistingItem">testReadExistingItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplTest" hash-for-method="testReadExistingUser">testReadExistingUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplTest" hash-for-method="testReadUnexistingUser">testReadUnexistingUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplItemTest" hash-for-method="testUpdateItem">testUpdateItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplOrderTest" hash-for-method="testUpdateOrder">testUpdateOrder</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplTest" hash-for-method="testUpdateUser">testUpdateUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Services-Jdbc_test_suite" title="com.source.it.jdbc.dao.GenericDaoImplTest" hash-for-method="testWriteNewUser">testWriteNewUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Services-Jdbc_test_suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Services-Jdbc_test_suite" class="panel Services-Jdbc_test_suite">
+          <div class="suite-Services-Jdbc_test_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.source.it.jdbc.dao.GenericDaoImplItemTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testCreateItem">
+                  </a> <!-- testCreateItem -->
+                  <span class="method-name">testCreateItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testDeleteItem">
+                  </a> <!-- testDeleteItem -->
+                  <span class="method-name">testDeleteItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testReadExistingItem">
+                  </a> <!-- testReadExistingItem -->
+                  <span class="method-name">testReadExistingItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUpdateItem">
+                  </a> <!-- testUpdateItem -->
+                  <span class="method-name">testUpdateItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Services-Jdbc_test_suite-class-passed -->
+          <div class="suite-Services-Jdbc_test_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.source.it.utils.SqlGeneratorUtilsTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGenerateCreateSqlForUser">
+                  </a> <!-- testGenerateCreateSqlForUser -->
+                  <span class="method-name">testGenerateCreateSqlForUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGenerateDeleteSqlForUser">
+                  </a> <!-- testGenerateDeleteSqlForUser -->
+                  <span class="method-name">testGenerateDeleteSqlForUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGenerateSelectSqlForItem">
+                  </a> <!-- testGenerateSelectSqlForItem -->
+                  <span class="method-name">testGenerateSelectSqlForItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGenerateSelectSqlForItemType">
+                  </a> <!-- testGenerateSelectSqlForItemType -->
+                  <span class="method-name">testGenerateSelectSqlForItemType</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGenerateSelectSqlForUser">
+                  </a> <!-- testGenerateSelectSqlForUser -->
+                  <span class="method-name">testGenerateSelectSqlForUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGenerateSelectSqlForWarrantyPeriod">
+                  </a> <!-- testGenerateSelectSqlForWarrantyPeriod -->
+                  <span class="method-name">testGenerateSelectSqlForWarrantyPeriod</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGenerateUserUpdateSql">
+                  </a> <!-- testGenerateUserUpdateSql -->
+                  <span class="method-name">testGenerateUserUpdateSql</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Services-Jdbc_test_suite-class-passed -->
+          <div class="suite-Services-Jdbc_test_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.source.it.jdbc.dao.GenericDaoImplOrderTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testCreateOrder">
+                  </a> <!-- testCreateOrder -->
+                  <span class="method-name">testCreateOrder</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testDeleteItem">
+                  </a> <!-- testDeleteItem -->
+                  <span class="method-name">testDeleteItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUpdateOrder">
+                  </a> <!-- testUpdateOrder -->
+                  <span class="method-name">testUpdateOrder</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Services-Jdbc_test_suite-class-passed -->
+          <div class="suite-Services-Jdbc_test_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.source.it.jdbc.manager.UserDaoManagerTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGetUserByLogin">
+                  </a> <!-- testGetUserByLogin -->
+                  <span class="method-name">testGetUserByLogin</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGetUserByLoginForUnexistingUser">
+                  </a> <!-- testGetUserByLoginForUnexistingUser -->
+                  <span class="method-name">testGetUserByLoginForUnexistingUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Services-Jdbc_test_suite-class-passed -->
+          <div class="suite-Services-Jdbc_test_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.source.it.jdbc.dao.GenericDaoImplTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testDeleteUser">
+                  </a> <!-- testDeleteUser -->
+                  <span class="method-name">testDeleteUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testReadExistingUser">
+                  </a> <!-- testReadExistingUser -->
+                  <span class="method-name">testReadExistingUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testReadUnexistingUser">
+                  </a> <!-- testReadUnexistingUser -->
+                  <span class="method-name">testReadUnexistingUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUpdateUser">
+                  </a> <!-- testUpdateUser -->
+                  <span class="method-name">testUpdateUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testWriteNewUser">
+                  </a> <!-- testWriteNewUser -->
+                  <span class="method-name">testWriteNewUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Services-Jdbc_test_suite-class-passed -->
+        </div> <!-- panel Services-Jdbc_test_suite -->
+        <div panel-name="test-xml-Services-Jdbc_test_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">/Users/kblyumkin/Projects/ServiceCenter/jdbc/src/test/resources/testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot; name=&quot;Services-Jdbc test suite&quot;&gt;
+  &lt;test name=&quot;setup&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.source.it.jdbc.dao.H2Starter&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- setup --&gt;
+  &lt;test name=&quot;GenericDaoImpl(User/UserRole/Item/Order) + UserManager tests&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.source.it.jdbc.dao.GenericDaoImplTest&quot;/&gt;
+      &lt;class name=&quot;com.source.it.jdbc.manager.UserDaoManagerTest&quot;/&gt;
+      &lt;class name=&quot;com.source.it.utils.SqlGeneratorUtilsTest&quot;/&gt;
+      &lt;class name=&quot;com.source.it.jdbc.dao.GenericDaoImplItemTest&quot;/&gt;
+      &lt;class name=&quot;com.source.it.jdbc.dao.GenericDaoImplOrderTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- GenericDaoImpl(User/UserRole/Item/Order) + UserManager tests --&gt;
+&lt;/suite&gt; &lt;!-- Services-Jdbc test suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Services-Jdbc_test_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Services-Jdbc test suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">setup (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">GenericDaoImpl(User/UserRole/Item/Order) + UserManager tests (5 classes)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Services-Jdbc_test_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Services-Jdbc test suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Services-Jdbc_test_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Services-Jdbc test suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Services-Jdbc_test_suite');
+function tableData_Services-Jdbc_test_suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(21);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'testDeleteItem')
+data.setCell(0, 2, 'com.source.it.jdbc.dao.GenericDaoImplOrderTest')
+data.setCell(0, 3, 80);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'testUpdateOrder')
+data.setCell(1, 2, 'com.source.it.jdbc.dao.GenericDaoImplOrderTest')
+data.setCell(1, 3, 77);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'testDeleteItem')
+data.setCell(2, 2, 'com.source.it.jdbc.dao.GenericDaoImplItemTest')
+data.setCell(2, 3, 7);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'testUpdateItem')
+data.setCell(3, 2, 'com.source.it.jdbc.dao.GenericDaoImplItemTest')
+data.setCell(3, 3, 5);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'testReadUnexistingUser')
+data.setCell(4, 2, 'com.source.it.jdbc.dao.GenericDaoImplTest')
+data.setCell(4, 3, 4);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'testUpdateUser')
+data.setCell(5, 2, 'com.source.it.jdbc.dao.GenericDaoImplTest')
+data.setCell(5, 3, 3);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'testReadExistingItem')
+data.setCell(6, 2, 'com.source.it.jdbc.dao.GenericDaoImplItemTest')
+data.setCell(6, 3, 3);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'testDeleteUser')
+data.setCell(7, 2, 'com.source.it.jdbc.dao.GenericDaoImplTest')
+data.setCell(7, 3, 3);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'testWriteNewUser')
+data.setCell(8, 2, 'com.source.it.jdbc.dao.GenericDaoImplTest')
+data.setCell(8, 3, 3);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'testCreateItem')
+data.setCell(9, 2, 'com.source.it.jdbc.dao.GenericDaoImplItemTest')
+data.setCell(9, 3, 3);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'testGetUserByLogin')
+data.setCell(10, 2, 'com.source.it.jdbc.manager.UserDaoManagerTest')
+data.setCell(10, 3, 2);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'testReadExistingUser')
+data.setCell(11, 2, 'com.source.it.jdbc.dao.GenericDaoImplTest')
+data.setCell(11, 3, 2);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'testCreateOrder')
+data.setCell(12, 2, 'com.source.it.jdbc.dao.GenericDaoImplOrderTest')
+data.setCell(12, 3, 1);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'testGenerateSelectSqlForItem')
+data.setCell(13, 2, 'com.source.it.utils.SqlGeneratorUtilsTest')
+data.setCell(13, 3, 1);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'testGenerateSelectSqlForWarrantyPeriod')
+data.setCell(14, 2, 'com.source.it.utils.SqlGeneratorUtilsTest')
+data.setCell(14, 3, 1);
+data.setCell(15, 0, 15)
+data.setCell(15, 1, 'testGenerateDeleteSqlForUser')
+data.setCell(15, 2, 'com.source.it.utils.SqlGeneratorUtilsTest')
+data.setCell(15, 3, 0);
+data.setCell(16, 0, 16)
+data.setCell(16, 1, 'testGenerateCreateSqlForUser')
+data.setCell(16, 2, 'com.source.it.utils.SqlGeneratorUtilsTest')
+data.setCell(16, 3, 0);
+data.setCell(17, 0, 17)
+data.setCell(17, 1, 'testGenerateSelectSqlForUser')
+data.setCell(17, 2, 'com.source.it.utils.SqlGeneratorUtilsTest')
+data.setCell(17, 3, 0);
+data.setCell(18, 0, 18)
+data.setCell(18, 1, 'testGetUserByLoginForUnexistingUser')
+data.setCell(18, 2, 'com.source.it.jdbc.manager.UserDaoManagerTest')
+data.setCell(18, 3, 0);
+data.setCell(19, 0, 19)
+data.setCell(19, 1, 'testGenerateSelectSqlForItemType')
+data.setCell(19, 2, 'com.source.it.utils.SqlGeneratorUtilsTest')
+data.setCell(19, 3, 0);
+data.setCell(20, 0, 20)
+data.setCell(20, 1, 'testGenerateUserUpdateSql')
+data.setCell(20, 2, 'com.source.it.utils.SqlGeneratorUtilsTest')
+data.setCell(20, 3, 0);
+window.suiteTableData['Services-Jdbc_test_suite']= { tableData: data, tableDiv: 'times-div-Services-Jdbc_test_suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 195 ms</span>
+              <div id="times-div-Services-Jdbc_test_suite">
+              </div> <!-- times-div-Services-Jdbc_test_suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Services-Jdbc_test_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Services-Jdbc test suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Services-Jdbc_test_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Services-Jdbc_test_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.jdbc.dao.H2Starter</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">startH2</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.jdbc.dao.GenericDaoImplTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextBeforeTestClass</span>
+                <span class="method-start">287 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextPrepareTestInstance</span>
+                <span class="method-start">289 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">763 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testReadUnexistingUser())</span>
+                <span class="method-start">774 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testReadUnexistingUser</span>
+                <span class="method-start">775 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testReadUnexistingUser())</span>
+                <span class="method-start">779 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testWriteNewUser())</span>
+                <span class="method-start">780 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testWriteNewUser</span>
+                <span class="method-start">780 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testWriteNewUser())</span>
+                <span class="method-start">783 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testReadExistingUser())</span>
+                <span class="method-start">783 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testReadExistingUser</span>
+                <span class="method-start">783 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testReadExistingUser())</span>
+                <span class="method-start">785 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testUpdateUser())</span>
+                <span class="method-start">785 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testUpdateUser</span>
+                <span class="method-start">786 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testUpdateUser())</span>
+                <span class="method-start">790 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testDeleteUser())</span>
+                <span class="method-start">790 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testDeleteUser</span>
+                <span class="method-start">790 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplTest.testDeleteUser())</span>
+                <span class="method-start">793 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">793 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-class after">
+                <span class="method-name">springTestContextAfterTestClass</span>
+                <span class="method-start">794 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.jdbc.manager.UserDaoManagerTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextBeforeTestClass</span>
+                <span class="method-start">795 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextPrepareTestInstance</span>
+                <span class="method-start">795 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">799 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.manager.UserDaoManagerTest.testGetUserByLogin())</span>
+                <span class="method-start">800 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetUserByLogin</span>
+                <span class="method-start">800 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.manager.UserDaoManagerTest.testGetUserByLogin())</span>
+                <span class="method-start">802 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.manager.UserDaoManagerTest.testGetUserByLoginForUnexistingUser())</span>
+                <span class="method-start">802 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.manager.UserDaoManagerTest.testGetUserByLoginForUnexistingUser())</span>
+                <span class="method-start">803 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testGetUserByLoginForUnexistingUser</span>
+                <span class="method-start">803 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">804 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-class after">
+                <span class="method-name">springTestContextAfterTestClass</span>
+                <span class="method-start">805 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.utils.SqlGeneratorUtilsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testGenerateCreateSqlForUser</span>
+                <span class="method-start">805 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testGenerateDeleteSqlForUser</span>
+                <span class="method-start">806 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testGenerateSelectSqlForItem</span>
+                <span class="method-start">806 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testGenerateSelectSqlForItemType</span>
+                <span class="method-start">807 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testGenerateSelectSqlForUser</span>
+                <span class="method-start">807 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testGenerateSelectSqlForWarrantyPeriod</span>
+                <span class="method-start">807 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.jdbc.dao.GenericDaoImplItemTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextBeforeTestClass</span>
+                <span class="method-start">808 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextPrepareTestInstance</span>
+                <span class="method-start">808 ms</span>
+              </div> <!-- configuration-class before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.utils.SqlGeneratorUtilsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testGenerateUserUpdateSql</span>
+                <span class="method-start">808 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.jdbc.dao.GenericDaoImplItemTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">814 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testCreateItem() throws java.lang.Exceptio...)</span>
+                <span class="method-start">817 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testCreateItem</span>
+                <span class="method-start">817 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testCreateItem() throws java.lang.Exceptio...)</span>
+                <span class="method-start">820 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testReadExistingItem())</span>
+                <span class="method-start">821 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testReadExistingItem</span>
+                <span class="method-start">821 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testReadExistingItem())</span>
+                <span class="method-start">824 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testUpdateItem())</span>
+                <span class="method-start">824 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testUpdateItem</span>
+                <span class="method-start">824 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testUpdateItem())</span>
+                <span class="method-start">829 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testDeleteItem())</span>
+                <span class="method-start">829 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testDeleteItem</span>
+                <span class="method-start">829 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplItemTest.testDeleteItem())</span>
+                <span class="method-start">836 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">836 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-class after">
+                <span class="method-name">springTestContextAfterTestClass</span>
+                <span class="method-start">839 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.jdbc.dao.GenericDaoImplOrderTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextBeforeTestClass</span>
+                <span class="method-start">839 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextPrepareTestInstance</span>
+                <span class="method-start">839 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">849 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplOrderTest.testCreateOrder())</span>
+                <span class="method-start">853 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testCreateOrder</span>
+                <span class="method-start">854 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplOrderTest.testCreateOrder())</span>
+                <span class="method-start">856 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplOrderTest.testUpdateOrder())</span>
+                <span class="method-start">856 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testUpdateOrder</span>
+                <span class="method-start">857 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplOrderTest.testUpdateOrder())</span>
+                <span class="method-start">934 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplOrderTest.testDeleteItem())</span>
+                <span class="method-start">935 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testDeleteItem</span>
+                <span class="method-start">935 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.source.it.jdbc.dao.GenericDaoImplOrderTest.testDeleteItem())</span>
+                <span class="method-start">1016 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">1016 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-class after">
+                <span class="method-name">springTestContextAfterTestClass</span>
+                <span class="method-start">1017 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.source.it.jdbc.dao.H2Starter</div> <!-- chronological-class-name -->
+              <div class="configuration-suite after">
+                <span class="method-name">shutDownH2</span>
+                <span class="method-start">1024 ms</span>
+              </div> <!-- configuration-suite after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>
